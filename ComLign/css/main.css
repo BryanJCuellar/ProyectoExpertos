@@ -1,0 +1,69 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.bg-custom-nav{
+    background-color: #EEFBFF;
+}
+nav .navbar-brand img {
+    width: 180px;
+    height: auto;
+}
+
+.nav-item .nav-link {
+    font-size: 20px;
+    font-weight: bold;
+    color: #167C82 !important;
+}
+
+.navbar-light .custom-toggler {
+    border-color: #167c82;
+}
+.navbar-light .navbar-toggler:focus {
+    box-shadow: 0px 0px 5px inset#167c82;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(13, 161, 172, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+body{
+    padding-top: 5rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.box{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#landing-page h2{
+    color:#0BD3DF;
+}
+#landing-page p{
+    color:#9BA3A4;
+    font-size: 20px;
+}
+/**/
+/*Responsive Design (Media Query)*/
+/***Extra small devices (portrait phones, less than 576px)***/
+@media (max-width: 575.98px) {
+
+}
+
+/***Small devices (landscape phones, 576px and up)***/
+@media (min-width: 576px) and (max-width: 767.98px) {
+    
+}
+
+/***Medium devices (tablets, 768px and up)***/
+@media (min-width: 768px) and (max-width: 991.98px) {
+    
+}
+
+/***Large devices (desktops, 992px and up)***/
+@media (min-width: 992px) and (max-width: 1199.98px) {}
+
+/***Extra large devices (large desktops, 1200px and up)***/
+@media (min-width: 1200px) {}
