@@ -4,23 +4,32 @@
     box-sizing: border-box;
 }
 
-.bg-custom-nav{
+/*NavBar*/
+.bg-custom-nav {
     background-color: #EEFBFF;
 }
+
 nav .navbar-brand img {
-    width: 180px;
+    width: 160px;
     height: auto;
 }
 
-.nav-item .nav-link {
+.nav-item .nav-custom-link {
     font-size: 20px;
     font-weight: bold;
-    color: #167C82 !important;
+    color: #167C82;
+}
+
+.nav-item .nav-custom-link:hover,
+.link-mirar:hover,
+.footer-custom-link:hover {
+    text-decoration: none;
 }
 
 .navbar-light .custom-toggler {
     border-color: #167c82;
 }
+
 .navbar-light .navbar-toggler:focus {
     box-shadow: 0px 0px 5px inset#167c82;
 }
@@ -29,38 +38,197 @@ nav .navbar-brand img {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(13, 161, 172, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-body{
+/**/
+/*Footer*/
+.bg-custom-footer {
+    background-color: #18888F;
+}
+
+footer section {
+    padding: 20px 0px;
+    color: #FFF;
+}
+
+footer .footer-brand {
+    width: 100px;
+    height: auto;
+}
+
+footer ul>li {
+    list-style: none;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.footer-custom-link {
+    color: #FFF;
+}
+
+/**/
+body {
     padding-top: 5rem;
     font-family: Arial, Helvetica, sans-serif;
 }
-.box{
+
+.box {
     width: 95%;
     margin-left: auto;
     margin-right: auto;
 }
-#landing-page h2{
-    color:#0BD3DF;
+
+#landing-page h1,
+#landing-page h2,
+.nav-item .nav-custom-link:hover,
+.link-mirar:hover,
+.footer-custom-link:hover {
+    color: #0BD3DF;
 }
-#landing-page p{
-    color:#9BA3A4;
-    font-size: 20px;
+
+/*Colores custom*/
+.custom-lightBlue {
+    color: #64e1df;
 }
+
+.custom-mediumBlue1 {
+    color: #54c6cc;
+}
+
+.custom-mediumBlue2 {
+    color: #33b3ba;
+}
+
+.custom-primaryBlue {
+    color: #167C82;
+}
+
+.custom-boldBlue {
+    color: #1c7695;
+}
+
+.custom-gray {
+    color: #9BA3A4 !important;
+}
+
+.bg-custom-sign {
+    background-color: #BCF3F6;
+}
+
 /**/
-/*Responsive Design (Media Query)*/
+.btn-primary {
+    color: #FFF !important;
+    background-color: #1c7695 !important;
+    border-color: #1c7695 !important;
+    font-weight: bold;
+    min-width: 200px;
+    padding: 10px 15px;
+    border-radius: 15px;
+}
+
+.btn-primary:hover {
+    background-color: #33b3ba !important;
+    border-color: #33b3ba !important;
+    box-shadow: 0px 0px 5px inset#ffffff;
+}
+
+.btn-primary:active,
+.btn-primary:focus {
+    box-shadow: 0px 0px 15px inset #43f1fa;
+}
+
+#landing-page p {
+    font-size: 20px;
+    text-align: justify;
+}
+
+#landing-page hr {
+    border-top: 1px solid rgb(101, 226, 224, 0.5);
+}
+
+.link-mirar {
+    font-size: 16px;
+    color: #64e1df;
+}
+
+.filter-opacity:hover {
+    filter: opacity(.8);
+}
+
+
+#page-signin .box-sign,
+#page-login .box-sign {
+    width: 750px;
+    max-width: 100%;
+    background-color: #FFF;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 50px 20px;
+}
+
+.label-input {
+    width: 500px;
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input-sign {
+    max-height: 2.5rem;
+    font-weight: 500;
+    border-radius: 10px;
+}
+
+.input-sign,
+.label-form,
+.custom-select {
+    font-size: 18px;
+}
+
+.input-sign::placeholder,
+.input-sign::-ms-input-placeholder,
+.input-sign:-ms-input-placeholder {
+    color: #C1D1D2;
+}
+
+.custom-select {
+    background-color: #fff;
+    color: #585c5c;
+    padding: 7px 15px;
+    text-align: center;
+    border-radius: 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+}
+
+#page-signin .btn-primary,
+#page-login .btn-primary {
+    width: 45%;
+}
+
+/**/
 /***Extra small devices (portrait phones, less than 576px)***/
 @media (max-width: 575.98px) {
+    .w-xs-100 {
+        width: 100%;
+    }
 
+    .box {
+        width: 100%;
+    }
 }
 
 /***Small devices (landscape phones, 576px and up)***/
-@media (min-width: 576px) and (max-width: 767.98px) {
-    
+@media (min-width: 576px) {
+    .w-sm-100 {
+        width: 100%;
+    }
 }
 
+@media (min-width: 576px) and (max-width: 767.98px) {}
+
 /***Medium devices (tablets, 768px and up)***/
-@media (min-width: 768px) and (max-width: 991.98px) {
-    
-}
+@media (min-width: 768px) and (max-width: 991.98px) {}
 
 /***Large devices (desktops, 992px and up)***/
 @media (min-width: 992px) and (max-width: 1199.98px) {}

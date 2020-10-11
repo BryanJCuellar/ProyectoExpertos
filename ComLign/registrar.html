@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ComLign - Registro</title>
+    <link rel="shortcut icon" href="img/Logotipo/Icon.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" />
+    <!--FontAwesome-->
+    <script src="https://kit.fontawesome.com/990d8e800d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body id="page-signin" class="bg-custom-sign">
+    <!--Barra de navegacion-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-custom-nav fixed-top py-0 px-xl-4">
+        <a class="navbar-brand" href="#">
+            <img class="d-none d-md-block" src="img/Logotipo/ComLign_Abstract_Side.png" alt="">
+            <img class="d-block d-md-none" src="img/Logotipo/ComLign_Word.png" alt="">
+        </a>
+        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse pl-sm-4" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mb-3 mb-lg-0">
+                    <a class="nav-custom-link pl-lg-0 pr-lg-3 pr-xl-5" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item mb-3 mb-lg-0">
+                    <a class="nav-custom-link pl-lg-0 pr-lg-3 pr-xl-5" href="#">Empresas</a>
+                </li>
+                <li class="nav-item mb-3 mb-lg-0">
+                    <a class="nav-custom-link pl-lg-0 pr-lg-3 pr-xl-5" href="#seccion-registro">Registrarse</a>
+                </li>
+                <li class="nav-item mb-3 mb-lg-0">
+                    <a class="nav-custom-link pl-lg-0 pr-lg-3 pr-xl-5" href="login.html">Iniciar Sesión</a>
+                </li>
+                <li class="nav-item mb-3 mb-lg-0">
+                    <a class="nav-custom-link pl-lg-0 pr-lg-3 pr-xl-5" href="#">Contactanos</a>
+                </li>
+                <li class="nav-item mb-3 mb-lg-0">
+                    <a class="nav-custom-link pl-lg-0 pr-lg-3 pr-xl-5" href="#">Ayuda</a>
+                </li>
+                <li class="nav-item mb-3 mb-lg-0"">
+                    <a class=" nav-custom-link pl-lg-0 pr-lg-3 pr-xl-5"><i class="fas fa-search"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!---->
+    <main class="container-fluid">
+        <div id="seccion-registro" class="box-sign my-5">
+            <div class="text-center mb-4"><img class="img-fluid" src="img/Logotipo/ComLign_Slogan.png" alt=""></div>
+            <h1 class="text-center custom-primaryBlue mb-3"><b>Registro</b></h1>
+            <div class="label-input mb-3">
+                <label class="label-form custom-primaryBlue pl-2" for="registro-nombre"><b>Nombre</b></label>
+                <input type="text" id="registro-nombre" class="form-control input-sign px-3" placeholder="Nombre">
+            </div>
+            <div class="label-input mb-3">
+                <label class="label-form custom-primaryBlue pl-2" for="registro-apellido"><b>Apellido</b></label>
+                <input type="text" id="registro-apellido" class="form-control input-sign px-3" placeholder="Apellido">
+            </div>
+            <div class="label-input mb-3">
+                <label class="label-form custom-primaryBlue pl-2" for="registro-email"><b>Email</b></label>
+                <input type="email" id="registro-email" class="form-control input-sign px-3" placeholder="Email">
+            </div>
+            <div class="label-input mb-3">
+                <label class="label-form custom-primaryBlue pl-2" for="registro-usuario"><b>Usuario</b></label>
+                <input type="text" id="registro-usuario" class="form-control input-sign px-3" placeholder="Usuario">
+            </div>
+            <div class="label-input mb-3">
+                <label class="label-form custom-primaryBlue pl-2" for="registro-tipoUsuario"><b>Tipo Usuario</b></label>
+                <select id="registro-tipoUsuario" class="custom-select">
+                    <option value="">Seleccionar</option>
+                    <option value="empresario">Empresario</option>
+                    <option value="cliente">Cliente</option>
+                </select>
+            </div>
+            <div class="label-input mb-5">
+                <label class="label-form custom-primaryBlue pl-2" for="registro-password"><b>Password</b></label>
+                <input type="password" id="registro-password" class="form-control input-sign px-3"
+                    placeholder="Password">
+            </div>
+            <div class="text-center mb-3"><button type="button" class="btn btn-primary">Registrar</button></div>
+        </div>
+    </main>
+    <footer class="bg-custom-footer">
+        <section class="container-fluid">
+            <div class="row px-5 mb-2">
+                <div class="col-12 col-sm-6 col-lg-3 mb-2 d-none d-lg-block text-center">
+                    <img src="img/Logotipo/Icon_White.png" class="img-fluid footer-brand">
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3 mb-2">
+                    <ul class="text-center">
+                        <li><a class="footer-custom-link" href="#">Contacto</a></li>
+                        <li><a class="footer-custom-link" href="#">Centro de Ayuda</a></li>
+                        <li><a class="footer-custom-link" href="#">Terminos y Condiciones</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3 mb-2">
+                    <ul class="text-center">
+                        <li><a class="footer-custom-link" href="#">Lorem Ipsum</a></li>
+                        <li><a class="footer-custom-link" href="#">Lorem Ipsum dolor sit</a></li>
+                        <li><a class="footer-custom-link" href="#">Lorem Ipsum dolor sit</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3 mb-2">
+                    <ul class="text-center">
+                        <li>Síguenos</li>
+                        <li>
+                            <a class="footer-custom-link mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="footer-custom-link mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="footer-custom-link" href="#"><i class="fab fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center text-white">Copyright &copy;
+                <script>
+                    document.write(new Date().getFullYear());
+                </script>
+            </div>
+        </section>
+    </footer>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/controlador.js"></script>
+</body>
+
+</html>
