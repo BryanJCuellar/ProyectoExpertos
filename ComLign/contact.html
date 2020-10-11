@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ComLign - Login</title>
+    <title>ComLign - Contacto</title>
     <link rel="shortcut icon" href="img/Logotipo/Icon.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" />
     <!--FontAwesome-->
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body id="page-login" class="bg-custom-sign">
+<body id="page-contact">
     <!--Barra de navegacion-->
     <nav class="navbar navbar-expand-lg navbar-light bg-custom-nav fixed-top py-0 px-xl-4">
         <a class="navbar-brand" href="#">
@@ -37,10 +37,10 @@
                     <a class="nav-custom-link pl-lg-0 pr-lg-3 pr-xl-5" href="registrar.html">Registrarse</a>
                 </li>
                 <li class="nav-item mb-3 mb-lg-0">
-                    <a class="nav-custom-link pl-lg-0 pr-lg-3 pr-xl-5" href="#seccion-login">Iniciar Sesión</a>
+                    <a class="nav-custom-link pl-lg-0 pr-lg-3 pr-xl-5" href="login.html">Iniciar Sesión</a>
                 </li>
                 <li class="nav-item mb-3 mb-lg-0">
-                    <a class="nav-custom-link pl-lg-0 pr-lg-3 pr-xl-5" href="contact.html">Contáctanos</a>
+                    <a class="nav-custom-link pl-lg-0 pr-lg-3 pr-xl-5" href="#seccion-contact">Contáctanos</a>
                 </li>
                 <li class="nav-item mb-3 mb-lg-0">
                     <a class="nav-custom-link pl-lg-0 pr-lg-3 pr-xl-5" href="help.html">Ayuda</a>
@@ -53,19 +53,24 @@
     </nav>
     <!---->
     <main class="container-fluid">
-        <div id="seccion-login" class="box-sign my-5">
-            <div class="text-center mb-4"><img class="img-fluid" src="img/Logotipo/ComLign_Slogan.png" alt=""></div>
-            <h1 class="text-center custom-primaryBlue mb-3"><b>Inicio de Sesión</b></h1>
+        <div class="text-center my-4"><img class="img-fluid" src="img/Logotipo/ComLign_Slogan.png" alt=""></div>
+        <section id="seccion-contact" class="box">
+            <h2 class="text-center mb-4"><b>Formulario de Contacto</b></h2>
             <div class="label-input mb-3">
-                <label class="label-form custom-primaryBlue pl-2" for="login-email"><b>Email</b></label>
-                <input type="email" id="login-email" class="form-control input-sign px-3" placeholder="Email">
+                <label class="label-form custom-primaryBlue pl-2" for="contact-email"><b>Correo Electrónico</b></label>
+                <input type="email" id="contact-email" class="form-control input-sign px-3">
+            </div>
+            <div class="label-input mb-3">
+                <label class="label-form custom-primaryBlue pl-2" for="contact-asunto"><b>Asunto</b></label>
+                <input type="email" id="contact-asunto" class="form-control input-sign px-3">
             </div>
             <div class="label-input mb-5">
-                <label class="label-form custom-primaryBlue pl-2" for="login-password"><b>Password</b></label>
-                <input type="password" id="login-password" class="form-control input-sign px-3" placeholder="Password">
+                <label class="label-form custom-primaryBlue pl-2" for="contact-mensaje"><b>Mensaje</b></label>
+                <textarea id="contact-mensaje" rows="10" class="form-control custom-textarea"></textarea>
             </div>
             <div class="text-center mb-3"><button type="button" class="btn btn-primary">Iniciar Sesión</button></div>
-        </div>
+        </section>
+
     </main>
     <!--Pie de Página-->
     <footer class="bg-custom-footer">
@@ -76,7 +81,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-3 mb-2">
                     <ul class="text-center">
-                        <li><a class="footer-custom-link" href="contact.html">Contacto</a></li>
+                        <li><a class="footer-custom-link" href="#seccion-contact">Contacto</a></li>
                         <li><a class="footer-custom-link" href="help.html">Centro de Ayuda</a></li>
                         <li><a class="footer-custom-link" href="#">Terminos y Condiciones</a></li>
                     </ul>

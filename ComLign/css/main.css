@@ -70,7 +70,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.box {
+#landing-page .box {
     width: 95%;
     margin-left: auto;
     margin-right: auto;
@@ -177,6 +177,15 @@ body {
     border-radius: 10px;
 }
 
+.input-sign:focus, .custom-textarea:focus{
+    border-color:  rgb(100, 225, 223);
+    box-shadow: 0 0 0 0.2rem rgba(100, 225, 223,.25);
+}
+
+#page-contact .input-sign{
+    border-radius: 0px;
+}
+
 .input-sign,
 .label-form,
 .custom-select {
@@ -206,6 +215,15 @@ body {
     width: 45%;
 }
 
+#page-contact .box{
+    width: 750px;
+    max-width: 100%;
+    background-color: #FFF;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 50px 20px;
+}
+
 /**/
 /***Extra small devices (portrait phones, less than 576px)***/
 @media (max-width: 575.98px) {
@@ -213,7 +231,7 @@ body {
         width: 100%;
     }
 
-    .box {
+    #landing-page .box {
         width: 100%;
     }
 }
