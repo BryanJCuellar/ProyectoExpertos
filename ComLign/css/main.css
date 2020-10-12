@@ -14,7 +14,7 @@ nav .navbar-brand img {
     height: auto;
 }
 
-.nav-item .nav-custom-link {
+.nav-item .nav-custom-link,nav .dropdown-menu .dropdown-item {
     font-size: 20px;
     font-weight: bold;
     color: #167C82;
@@ -22,7 +22,8 @@ nav .navbar-brand img {
 
 .nav-item .nav-custom-link:hover,
 .link-mirar:hover,
-.footer-custom-link:hover {
+.footer-custom-link:hover,
+.link-container:hover {
     text-decoration: none;
 }
 
@@ -38,6 +39,23 @@ nav .navbar-brand img {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(13, 161, 172, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
+
+nav .dropdown-menu {
+    border:1px solid rgb(101, 226, 224, 0.5);
+    border-radius: 30px;
+}
+nav .dropdown-menu .dropdown-item {
+    width: 200px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 5px;
+    border-radius: 50px;
+}
+nav .dropdown-menu .dropdown-item:active{
+    background-color:  #dadee4;
+}
 /**/
 /*Footer*/
 .bg-custom-footer {
@@ -70,6 +88,9 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+li{
+    list-style: none;
+}
 #landing-page .box {
     width: 95%;
     margin-left: auto;
@@ -79,6 +100,7 @@ body {
 #landing-page h1,
 #landing-page h2,
 .nav-item .nav-custom-link:hover,
+nav .dropdown-menu .dropdown-item:hover,
 .link-mirar:hover,
 .footer-custom-link:hover {
     color: #0BD3DF;
@@ -114,6 +136,20 @@ body {
 }
 
 /**/
+/*Font Size*/
+.font-s-2{
+    font-size: 2rem;
+}
+.font-s-3{
+    font-size: 3rem;
+}
+.font-s-4{
+    font-size: 4rem;
+}
+.font-s-5{
+    font-size: 5rem;
+}
+/**/
 .btn-primary {
     color: #FFF !important;
     background-color: #1c7695 !important;
@@ -140,7 +176,7 @@ body {
     text-align: justify;
 }
 
-#landing-page hr {
+#landing-page hr, .dropdown-divider {
     border-top: 1px solid rgb(101, 226, 224, 0.5);
 }
 
@@ -155,7 +191,8 @@ body {
 
 
 #page-signin .box-sign,
-#page-login .box-sign {
+#page-login .box-sign,
+#page-contact .box {
     width: 750px;
     max-width: 100%;
     background-color: #FFF;
@@ -215,13 +252,23 @@ body {
     width: 45%;
 }
 
-#page-contact .box{
-    width: 750px;
-    max-width: 100%;
-    background-color: #FFF;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 50px 20px;
+.div-link-help{
+    width: 500px;
+    max-width: 90%;
+    padding: 30px;
+    border-radius: 30px;
+    border: 1px solid  #9BA3A4;
+}
+.div-link-help:hover{
+    background-color: #32B1BB;
+    border: 1px solid  #FFF;
+    box-shadow: 0px 0px 8px inset #FFF ;
+    transition: all 0.5s ease-in-out;
+}
+.div-link-help:hover .custom-lightBlue,
+.div-link-help:hover .custom-boldBlue,
+.div-link-help:hover .custom-gray{
+    color: #FFF !important;
 }
 
 /**/
