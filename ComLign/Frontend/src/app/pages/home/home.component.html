@@ -1,0 +1,82 @@
+<div id="landing-page">
+  <!--Barra de navegacion-->
+  <app-header></app-header>
+  <!---->
+  <main class="container-fluid">
+    <div class="box pt-3">
+      <div class="row">
+        <div class="col-12 col-md-6 pr-md-5 py-5">
+          <h1 class="text-center text-sm-left mb-5"><b>ComLign - El Sitio de tus Ideas</b></h1>
+          <h3 class="text-center text-sm-left custom-gray mb-5"><b>Construye tu negocio en linea con nuestra ayuda, ¡tu
+              traes tus ideas y
+              nosotros te brindamos las
+              herramientas!</b></h3>
+          <div class="text-center text-sm-left"><a [routerLink]="'./signin'" class="btn btn-primary">Empieza tu
+              negocio</a></div>
+        </div>
+        <div class="col-12 col-md-6 p-md-5">
+          <div class="text-center">
+            <img class="img-fluid" src="../../../assets/images/logotipo/ComLign_Slogan_Enhanced.png" alt="">
+          </div>
+        </div>
+      </div>
+      <hr><br>
+      <section id="landing-empresas">
+        <app-muestra-empresas></app-muestra-empresas>
+      </section>
+      <hr><br>
+      <section>
+        <div class="row my-5">
+          <div class="col-12 col-md-6">
+            <img class="img-fluid" src="../../../assets/images/Pagina Usuario Empresarial.png" alt="">
+          </div>
+          <div class="col-12 col-md-6 pl-md-5 py-5 mb-md-5">
+            <h2 class="text-center mb-5 mb-md-3"><b>Te ofrecemos las mejores herramientas</b></h2>
+            <h3 class="text-center custom-gray mb-5">¡Te damos la libertad de manejar tu negocio a tu
+              manera!</h3>
+            <p class="custom-gray">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati modi, itaque similique
+              labore eaque iure sit autem, commodi enim, doloremque illo error accusantium perferendis
+              quaerat praesentium voluptatem repellendus consequuntur suscipit.
+            </p>
+          </div>
+        </div>
+      </section>
+      <hr><br>
+      <section>
+        <div class="row my-5">
+          <div class="col-12 col-md-6 pr-md-5 py-5 mb-5">
+            <h2 class="text-center mb-3"><b>El Mejor Lugar para Emprender tu Negocio</b></h2>
+            <h3 class="text-center custom-gray mb-5">¡Déjanos brindarte la ayuda que necesitas!</h3>
+            <p class="custom-gray">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati modi, itaque similique
+              labore eaque iure sit autem, commodi enim, doloremque illo error accusantium perferendis
+              quaerat praesentium voluptatem repellendus consequuntur suscipit.
+            </p>
+          </div>
+          <div class="col-12 col-md-6">
+            <img class="img-fluid rounded-circle" src="../../../assets/images/escritorio-trabajo.jpg" alt="">
+          </div>
+        </div>
+      </section>
+      <hr>
+      <section class="text-center my-5">
+        <h2 class="mb-3"><b>¡Empieza tu viaje emprendedor en ComLign!</b></h2>
+        <p class="text-center custom-gray px-md-5">Registrate ahora en ComLign como usuario empresario para empezar con
+          tu
+          aventura emprendedora. Te damos la libertad de explorar las herramientas que necesitas para crecer en tu
+          negocio de forma gratuita por un periodo de 30 dias.
+        </p>
+        <a [routerLink]="'./signin'" class="btn btn-primary">Empieza Ahora</a>
+      </section>
+      <hr>
+      <section class="text-right my-5">
+        <a href="#landing-page" class="btn btn-primary">Ir Arriba<i class="fas fa-arrow-alt-circle-up ml-2"></i>
+        </a>
+      </section>
+    </div>
+  </main>
+  <!--Pie de Página-->
+  <app-footer></app-footer>
+  <!---->
+</div>

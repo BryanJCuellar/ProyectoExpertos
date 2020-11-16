@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-custom-nav fixed-top py-0 px-xl-4">
+  <a class="navbar-brand" [routerLink]="''">
+    <img class="d-none d-md-block" src="../../../../assets/images/logotipo/ComLign_Abstract_Side.png" alt="">
+    <img class="d-block d-md-none" src="../../../../assets/images/logotipo/ComLign_Word.png" alt="">
+  </a>
+  <button class="navbar-toggler custom-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse pl-sm-4" [ngbCollapse]="isMenuCollapsed">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item mb-3 mb-lg-0">
+        <!--<a class="nav-custom-link mr-lg-3 mr-xl-5" href="./home">Inicio</a>-->
+        <a class="nav-custom-link mr-lg-3 mr-xl-5" [routerLink]="'./home'">Inicio</a>
+      </li>
+      <li class="nav-item mb-3 mb-lg-0">
+        <a class="nav-custom-link mr-lg-3 mr-xl-5" [routerLink]="'./info-companies'">Empresas</a>
+      </li>
+      <li class="nav-item mb-3 mb-lg-0">
+        <a class="nav-custom-link mr-lg-3 mr-xl-5" [routerLink]="'./signin'">Registrarse</a>
+      </li>
+      <li class="nav-item dropdown mb-3 mb-lg-0" ngbDropdown>
+        <a class="nav-custom-link mr-lg-3 mr-xl-5 dropdown-toggle" id="registroTipoUsuario" ngbDropdownToggle>
+          Iniciar Sesión
+        </a>
+        <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="registroTipoUsuario">
+          <a class="dropdown-item" ngbDropdownItem [routerLink]="'./login-client'">Cliente</a>
+          <a class="dropdown-item" ngbDropdownItem [routerLink]="'./login-business'">Empresario</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" ngbDropdownItem [routerLink]="'./login-admin'">Administrador</a>
+        </div>
+      </li>
+      <li class="nav-item mb-3 mb-lg-0">
+        <a class="nav-custom-link mr-lg-3 mr-xl-5" [routerLink]="'./contact'">Contáctanos</a>
+      </li>
+      <li class="nav-item mb-3 mb-lg-0">
+        <a class="nav-custom-link mr-lg-3 mr-xl-5" [routerLink]="'./help'">Ayuda</a>
+      </li>
+    </ul>
+  </div>
+</nav>
