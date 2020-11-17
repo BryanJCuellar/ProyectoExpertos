@@ -241,7 +241,7 @@ nav .dropdown-menu .dropdown-item:hover,
 .link-plan,
 .link-sugerencia {
   font-size: 16px;
-  color: #64e1df;
+  /*color: #64e1df;*/
 }
 
 .filter-opacity:hover {
@@ -250,7 +250,7 @@ nav .dropdown-menu .dropdown-item:hover,
 
 
 #page-signin .box-sign,
-#page-login .box-sign,
+.page-login .box-sign,
 #page-contact .box {
   width: 750px;
   max-width: 100%;
@@ -312,7 +312,7 @@ nav .dropdown-menu .dropdown-item:hover,
 }
 
 #page-signin .btn-primary,
-#page-login .btn-primary {
+.page-login .btn-primary {
   width: 45%;
 }
 
@@ -337,10 +337,18 @@ nav .dropdown-menu .dropdown-item:hover,
   color: #FFF !important;
 }
 
-#div-inputEmpresa,
-#div-inputAdmin {
+.visible{
+  display: block;
+}
+
+.no-visible{
   display: none;
 }
+
+/*#div-inputEmpresa,
+#div-inputAdmin {
+  display: none;
+}*/
 
 #page-companies .form-control.input-search {
   display: inline-block;

@@ -1,12 +1,20 @@
-<div id="page-signin">
+<div id="page-signin" class="bg-custom-sign pt-5">
   <!--Barra de navegacion-->
   <app-header></app-header>
   <!---->
   <main class="container-fluid">
-    <div id="seccion-registro" class="box-sign my-5">
-      <div class="text-center mb-4"><img class="img-fluid" src="../../../assets/images/logotipo/ComLign_Slogan.png"
-          alt=""></div>
+    <div id="seccion-registro" class="box-sign mb-5">
+      <app-common-logo></app-common-logo>
       <h1 class="text-center custom-primaryBlue mb-3"><b>Registro</b></h1>
+      <div class="label-input mb-3">
+        <label class="label-form custom-primaryBlue pl-2" for="registro-tipoUsuario"><b>Tipo Usuario</b></label>
+        <select id="registro-tipoUsuario" class="custom-select" [(ngModel)]="tipoUsuarioSeleccionado">
+          <option ngValue="">Seleccionar</option>
+          <option ngValue="cliente">Cliente</option>
+          <option ngValue="empresario">Empresario</option>
+          <option ngValue="admin">Administrador</option>
+        </select>
+      </div>
       <div class="label-input mb-3">
         <label class="label-form custom-primaryBlue pl-2" for="registro-nombre"><b>Nombre</b></label>
         <input type="text" id="registro-nombre" class="form-control input-sign px-3" placeholder="Nombre">
@@ -19,24 +27,25 @@
         <label class="label-form custom-primaryBlue pl-2" for="registro-email"><b>Email</b></label>
         <input type="email" id="registro-email" class="form-control input-sign px-3" placeholder="Email">
       </div>
+      <div id="div-inputEmpresa" class="label-input mb-3" [ngClass]="{'visible':tipoUsuarioSeleccionado == 'empresario', 'no-visible':tipoUsuarioSeleccionado != 'empresario'}">
+        <label class="label-form custom-primaryBlue pl-2" for="registro-nombreEmpresa"><b>Empresa</b></label>
+        <input type="text" id="registro-nombreEmpresa" class="form-control input-sign px-3"
+          placeholder="Nombre Empresa">
+      </div>
+      <div id="div-inputAdmin" class="label-input mb-3" [ngClass]="{'visible':tipoUsuarioSeleccionado == 'admin', 'no-visible':tipoUsuarioSeleccionado != 'admin'}">
+        <label class="label-form custom-primaryBlue pl-2" for="registro-codigoAdmin"><b>Codigo Admin</b></label>
+        <input type="text" id="registro-codigoAdmin" class="form-control input-sign px-3"
+          placeholder="Codigo de Administrador">
+      </div>
       <div class="label-input mb-3">
         <label class="label-form custom-primaryBlue pl-2" for="registro-usuario"><b>Usuario</b></label>
         <input type="text" id="registro-usuario" class="form-control input-sign px-3" placeholder="Usuario">
-      </div>
-      <div class="label-input mb-3">
-        <label class="label-form custom-primaryBlue pl-2" for="registro-tipoUsuario"><b>Tipo Usuario</b></label>
-        <select id="registro-tipoUsuario" class="custom-select">
-          <option value="">Seleccionar</option>
-          <option value="empresario">Empresario</option>
-          <option value="cliente">Cliente</option>
-          <option value="admin">Administrador</option>
-        </select>
       </div>
       <div class="label-input mb-5">
         <label class="label-form custom-primaryBlue pl-2" for="registro-password"><b>Password</b></label>
         <input type="password" id="registro-password" class="form-control input-sign px-3" placeholder="Password">
       </div>
-      <div class="text-center mb-3"><button type="button" class="btn btn-primary">Registrar</button></div>
+      <div class="text-center mb-5"><button type="button" class="btn btn-primary">Registrar</button></div>
     </div>
   </main>
   <!--Pie de Página-->

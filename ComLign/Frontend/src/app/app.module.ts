@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
 import { CompaniesComponent } from './pages/companies/companies.component';
 import { SigninComponent } from './pages/signin/signin.component';
@@ -17,6 +18,8 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { MuestraEmpresasComponent } from './shared/components/muestra-empresas/muestra-empresas.component';
+import { ListaEmpresasComponent } from './shared/components/lista-empresas/lista-empresas.component';
+import { CommonLogoComponent } from './shared/components/common-logo/common-logo.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +35,16 @@ import { MuestraEmpresasComponent } from './shared/components/muestra-empresas/m
     FooterComponent,
     HeaderComponent,
     NotFoundComponent,
-    MuestraEmpresasComponent
+    MuestraEmpresasComponent,
+    ListaEmpresasComponent,
+    CommonLogoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
   ],
   providers: [
     Title

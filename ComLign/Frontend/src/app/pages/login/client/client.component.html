@@ -1,11 +1,10 @@
-<div id="page-login">
+<div class="page-login bg-custom-sign pt-5">
   <!--Barra de navegacion-->
   <app-header></app-header>
   <!---->
   <main class="container-fluid">
-    <div id="seccion-login" class="box-sign my-5">
-      <div class="text-center mb-4"><img class="img-fluid" src="../../../assets/images/logotipo/ComLign_Slogan.png"
-          alt=""></div>
+    <div id="seccion-login" class="box-sign mb-5">
+      <app-common-logo></app-common-logo>
       <h1 class="text-center custom-primaryBlue mb-3"><b>Inicio de Sesión</b></h1>
       <div class="text-center mb-3"><i class="fas fa-user custom-primaryBlue font-s-5"></i></div>
       <div class="label-input mb-3">
@@ -17,6 +16,10 @@
         <input type="password" id="login-password" class="form-control input-sign px-3" placeholder="Password">
       </div>
       <div class="text-center mb-3"><button type="button" class="btn btn-primary">Iniciar Sesión</button></div>
+      <div class="text-center mb-3">
+        <span class="custom-gray">Eres nuevo en ComLign?</span>
+        <a class="link-sugerencia custom-mediumBlue2 ml-2" [routerLink]="'/signin'">Registrate ahora!</a>
+      </div>
     </div>
   </main>
   <!--Pie de Página-->
