@@ -203,12 +203,24 @@ nav .dropdown-menu .dropdown-item:hover,
   border-color: #1c7695 !important;
   font-weight: bold;
   min-width: 200px;
-  padding: 10px 15px;
+  padding: 10px 30px;
+  border-radius: 15px;
+}
+
+.btn-outline-primary {
+  color: #33b3ba !important;
+  background-color: #FFF !important;
+  border: 3px solid #33b3ba !important;
+  font-weight: bold;
+  min-width: 200px;
+  padding: 10px 30px;
   border-radius: 15px;
 }
 
 .btn-primary:hover,
-.btn-search:hover {
+.btn-search:hover,
+.btn-outline-primary:hover {
+  color: #FFF !important;
   background-color: #33b3ba !important;
   border-color: #33b3ba !important;
   box-shadow: 0px 0px 5px inset#ffffff;
@@ -217,12 +229,10 @@ nav .dropdown-menu .dropdown-item:hover,
 .btn-primary:active,
 .btn-primary:focus,
 .btn-search:active,
-.btn-search:focus {
+.btn-search:focus,
+.btn-outline-primary:active,
+.btn-outline-primary:focus {
   box-shadow: 0px 0px 15px inset #43f1fa;
-}
-
-.btn-primary.enlace-prueba {
-  padding: 10px 30px;
 }
 
 #landing-page p,
@@ -241,7 +251,6 @@ nav .dropdown-menu .dropdown-item:hover,
 .link-plan,
 .link-sugerencia {
   font-size: 16px;
-  /*color: #64e1df;*/
 }
 
 .filter-opacity:hover {
@@ -312,8 +321,11 @@ nav .dropdown-menu .dropdown-item:hover,
 }
 
 #page-signin .btn-primary,
-.page-login .btn-primary {
-  width: 45%;
+#page-contact .btn-primary,
+.page-login .btn-primary,
+.page-login .btn-outline-primary,
+#page-payPlan .btn-outline-primary {
+    width: 45%;
 }
 
 .div-link-help {
@@ -337,11 +349,11 @@ nav .dropdown-menu .dropdown-item:hover,
   color: #FFF !important;
 }
 
-.visible{
+.visible {
   display: block;
 }
 
-.no-visible{
+.no-visible {
   display: none;
 }
 
@@ -455,6 +467,15 @@ span.visitar {
   border-radius: 15px;
 }
 
+.btn-success {
+  color: #FFF !important;
+  background-color: #2cd052 !important;
+  border-color: #2cd052 !important;
+  font-weight: bold;
+  padding: 10px 30px;
+  border-radius: 15px;
+}
+
 .btn-empresarial:hover {
   color: #FFF;
   background-color: #1ad3f8;
@@ -471,10 +492,18 @@ span.visitar {
   text-decoration: none
 }
 
+.btn-success:hover {
+  background-color: #2eff5f !important;
+  border-color: #2eff5f !important;
+  box-shadow: 0px 0px 5px inset#ffffff;
+}
+
 .btn-empresarial:active,
 .btn-empresarial:focus,
 .btn-premium:active,
-.btn-premium:focus {
+.btn-premium:focus,
+.btn-success:active,
+.btn-success:focus {
   box-shadow: 0px 0px 15px inset#ffffff;
 }
 
@@ -482,7 +511,8 @@ span.visitar {
   color: #1ad3f8;
 }
 
-#page-payPlan .box {
+#page-payPlan .box,
+.page-login .box-admin  {
   width: 750px;
   max-width: 100%;
   margin-left: auto;
