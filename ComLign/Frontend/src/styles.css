@@ -495,10 +495,6 @@ span.visitar {
   min-width: 100px;
 }
 
-#page-payPlan .link-sugerencia {
-  font-size: 20px;
-}
-
 /**/
 /***Extra small devices (portrait phones, less than 576px)***/
 @media (max-width: 575.98px) {

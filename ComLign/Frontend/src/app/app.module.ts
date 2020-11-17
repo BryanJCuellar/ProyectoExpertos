@@ -20,6 +20,9 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { MuestraEmpresasComponent } from './shared/components/muestra-empresas/muestra-empresas.component';
 import { ListaEmpresasComponent } from './shared/components/lista-empresas/lista-empresas.component';
 import { CommonLogoComponent } from './shared/components/common-logo/common-logo.component';
+import { PlansComponent } from './pages/plans/plans.component';
+import { PlanPaymentComponent } from './pages/plan-payment/plan-payment.component';
+import { CommonLogoDarkComponent } from './shared/components/common-logo-dark/common-logo-dark.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { CommonLogoComponent } from './shared/components/common-logo/common-logo
     NotFoundComponent,
     MuestraEmpresasComponent,
     ListaEmpresasComponent,
-    CommonLogoComponent
+    CommonLogoComponent,
+    PlansComponent,
+    PlanPaymentComponent,
+    CommonLogoDarkComponent
   ],
   imports: [
     BrowserModule,
