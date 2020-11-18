@@ -6,6 +6,7 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { ClientComponent } from './pages/login/client/client.component';
 import { BusinessComponent } from './pages/login/business/business.component';
 import { AdminComponent } from './pages/login/admin/admin.component';
+import { BusinessHomeComponent } from './pages/business-home/business-home.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HelpComponent } from './pages/help/help.component';
 import { PlansComponent } from './pages/plans/plans.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'login/client', component: ClientComponent, data: {title: 'ComLign - Iniciar Sesión'}},
   {path: 'login/business', component: BusinessComponent, data: {title: 'ComLign - Login Empresa'}},
   {path: 'login/admin', component: AdminComponent, data: {title: 'ComLign - Login Admin'}},
+  {path: 'admin-companies', component: BusinessHomeComponent, data: {title: 'ComLign - Business'}},
   {path: 'contact', component: ContactComponent, data: {title: 'ComLign - Contáctanos'}},
   {path: 'help', component: HelpComponent, data: {title: 'ComLign - Centro de Ayuda'}},
   {path: 'plans', component: PlansComponent, data: {title: 'ComLign - Planes'}},

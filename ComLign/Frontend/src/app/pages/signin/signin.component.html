@@ -27,12 +27,20 @@
         <label class="label-form custom-primaryBlue pl-2" for="registro-email"><b>Email</b></label>
         <input type="email" id="registro-email" class="form-control input-sign px-3" placeholder="Email">
       </div>
-      <div id="div-inputEmpresa" class="label-input mb-3" [ngClass]="{'visible':tipoUsuarioSeleccionado == 'empresario', 'no-visible':tipoUsuarioSeleccionado != 'empresario'}">
+      <div id="div-inputNombreEmpresa" class="label-input mb-3"
+        [ngClass]="{'visible':tipoUsuarioSeleccionado == 'empresario', 'no-visible':tipoUsuarioSeleccionado != 'empresario'}">
         <label class="label-form custom-primaryBlue pl-2" for="registro-nombreEmpresa"><b>Empresa</b></label>
         <input type="text" id="registro-nombreEmpresa" class="form-control input-sign px-3"
           placeholder="Nombre Empresa">
       </div>
-      <div id="div-inputAdmin" class="label-input mb-3" [ngClass]="{'visible':tipoUsuarioSeleccionado == 'admin', 'no-visible':tipoUsuarioSeleccionado != 'admin'}">
+      <div id="div-inputInfoEmpresa" class="label-input mb-3"
+        [ngClass]="{'visible':tipoUsuarioSeleccionado == 'empresario', 'no-visible':tipoUsuarioSeleccionado != 'empresario'}">
+        <label class="label-form custom-primaryBlue pl-2" for="registro-infoEmpresa"><b>Descripción Empresa</b></label>
+        <textarea id="registro-infoEmpresa" class="form-control custom-textarea px-3"
+          placeholder="Descripción sobre la Empresa" cols="30" rows="5"></textarea>
+      </div>
+      <div id="div-inputAdmin" class="label-input mb-3"
+        [ngClass]="{'visible':tipoUsuarioSeleccionado == 'admin', 'no-visible':tipoUsuarioSeleccionado != 'admin'}">
         <label class="label-form custom-primaryBlue pl-2" for="registro-codigoAdmin"><b>Codigo Admin</b></label>
         <input type="text" id="registro-codigoAdmin" class="form-control input-sign px-3"
           placeholder="Codigo de Administrador">

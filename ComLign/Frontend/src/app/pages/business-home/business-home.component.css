@@ -1,0 +1,80 @@
+/*Pagina de inicio Empresa*/
+/*SideBar*/
+/*body {
+  overflow-x: hidden;
+}*/
+
+#sidebar-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 90px 0 0;
+  /* Height of navbar */
+  min-height: 100vh;
+  margin-left: 0rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+  padding-left: 0rem;
+}
+
+.list-group-item{
+  border: 0;
+}
+
+.list-group .bg-custom-nav-dark:hover,
+#page-designCompany .nav-custom-link:hover,
+#page-designCompany .navbar-brand:hover{
+  color: #FFF;
+  font-weight: bold;
+  background-color: #33b3ba !important;
+  transition: all .3s ease-in-out;
+}
+
+.list-group .bg-custom-nav-dark:active,
+#page-designCompany .nav-custom-link:active,
+#page-designCompany .navbar-brand:active,
+.list-group .bg-custom-nav-dark:focus,
+#page-designCompany .nav-custom-link:focus,
+#page-designCompany .navbar-brand:focus{
+  color: #FFF;
+  outline: #33b3ba solid 2px !important;
+}
+
+@media (max-width: 767.98px) {
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+    overflow-y: hidden;
+  }
+}
+
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0rem;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+    padding-left: 17rem;
+  }
+}

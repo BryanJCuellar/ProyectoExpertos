@@ -35,6 +35,22 @@
       <li class="nav-item mb-3 mb-lg-0">
         <a class="nav-custom-link mr-lg-3 mr-xl-5" [routerLink]="'/help'">Ayuda</a>
       </li>
+      <!--Manejo de sesion (falta implementar)-->
+      <li class="nav-item dropdown mb-3 mb-lg-0 no-visible" ngbDropdown>
+        <a class="nav-custom-link mr-lg-3 mr-xl-5 dropdown-toggle" id="navCuentaCliente" ngbDropdownToggle>
+          <img class="img-perfil mr-2" src="../../../assets/images/Anonymous.png" alt="">
+          Nombre Usuario
+        </a>
+        <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="navCuentaCliente">
+          <a class="dropdown-item" ngbDropdownItem [routerLink]="'/login/client'">
+            <i class="far fa-user mr-3"></i>Mi Cuenta
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" ngbDropdownItem [routerLink]="'/login/admin'">
+            <i class="fas fa-sign-out-alt mr-3"></i>Cerrar Sesión
+          </a>
+        </div>
+      </li>
     </ul>
   </div>
 </nav>

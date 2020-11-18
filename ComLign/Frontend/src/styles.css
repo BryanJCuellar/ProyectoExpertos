@@ -13,6 +13,7 @@
 nav .navbar-brand img {
   width: 160px;
   height: auto;
+  vertical-align: middle;
 }
 
 .nav-item .nav-custom-link,
@@ -51,7 +52,7 @@ nav .dropdown-menu {
 
 nav .dropdown-menu .dropdown-item {
   width: 200px;
-  max-width: 80%;
+  max-width: 95%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -282,6 +283,10 @@ nav .dropdown-menu .dropdown-item:hover,
   border-radius: 10px;
 }
 
+#page-signin .custom-textarea {
+  border-radius: 10px;
+}
+
 .input-sign:focus,
 .custom-textarea:focus,
 #page-companies .form-control.input-search:focus {
@@ -325,7 +330,7 @@ nav .dropdown-menu .dropdown-item:hover,
 .page-login .btn-primary,
 .page-login .btn-outline-primary,
 #page-payPlan .btn-outline-primary {
-    width: 45%;
+  width: 45%;
 }
 
 .div-link-help {
@@ -357,9 +362,10 @@ nav .dropdown-menu .dropdown-item:hover,
   display: none;
 }
 
-/*#div-inputEmpresa,
+/*#div-inputNombreEmpresa,
+#div-inputInfoEmpresa,
 #div-inputAdmin {
-  display: none;
+    display: block;
 }*/
 
 #page-companies .form-control.input-search {
@@ -503,7 +509,9 @@ span.visitar {
 .btn-premium:active,
 .btn-premium:focus,
 .btn-success:active,
-.btn-success:focus {
+.btn-success:focus,
+.btn-toggle:active,
+.btn-toggle:focus {
   box-shadow: 0px 0px 15px inset#ffffff;
 }
 
@@ -512,7 +520,7 @@ span.visitar {
 }
 
 #page-payPlan .box,
-.page-login .box-admin  {
+.page-login .box-admin {
   width: 750px;
   max-width: 100%;
   margin-left: auto;
@@ -523,6 +531,85 @@ span.visitar {
 #page-payPlan #fechaVencimiento .custom-select {
   width: 30%;
   min-width: 100px;
+}
+
+/*Pagina de inicio Empresa*/
+#page-designCompany .bg-custom-nav-dark {
+  background-color: #1C7695;
+}
+
+#page-designCompany nav .navbar-brand .nav-logo {
+  width: 40px;
+  height: auto;
+  vertical-align: middle;
+}
+
+#page-designCompany nav i.fa-search {
+  position: absolute;
+  left: 0;
+  padding: 11px 15px;
+  color: #1C7695;
+}
+
+#page-designCompany .input-search {
+  padding: 20px 10px 20px 50px;
+  border-radius: 5px;
+  color: #1C7695;
+  font-weight: 500;
+}
+
+#page-designCompany .input-search::placeholder {
+  color: #1C7695;
+}
+
+#page-designCompany .nav-item .nav-custom-link {
+  color: #FFF;
+}
+
+.img-perfil {
+  width: 35px;
+  height: auto;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+
+#page-designCompany .img-perfil {
+  width: 50px;
+}
+
+#page-designCompany nav .dropdown-menu .dropdown-item {
+  width: 250px;
+  max-width: 100%;
+}
+
+.navbar-dark .custom-toggler {
+  border-color: #64e1df;
+}
+
+.navbar-dark .navbar-toggler:focus {
+  box-shadow: 0px 0px 10px inset#64e1df;
+}
+
+#page-designCompany .custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(33, 229, 239, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+#page-designCompany .btn-toggle {
+  min-width: 10px;
+  color: #FFF !important;
+  background-color:  #80f1f7 !important;
+  border-color:  #80f1f7 !important;
+  font-weight: bold;
+  padding: 7px 15px;
+  border-radius: 10px;
+}
+
+#page-designCompany .btn-toggle:hover{
+  color: #FFF;
+  background-color: #b9f0f3;
+  border-color:   #b9f0f3;
+  box-shadow: 0px 0px 5px inset#ffffff;
+  text-decoration: none
 }
 
 /**/
@@ -538,11 +625,23 @@ span.visitar {
   #landing-page p {
     text-align: center;
   }
+
+  /*Width*/
+  .w-xs-100 {
+    width: 100%;
+  }
+
+  .w-xs-75 {
+    width: 75%;
+  }
+
+  .w-xs-50 {
+    width: 50%;
+  }
+
 }
 
 /***Small devices (landscape phones, 576px and up)***/
-@media (min-width: 576px) {}
-
 @media (min-width: 576px) and (max-width: 767.98px) {}
 
 /***Medium devices (tablets, 768px and up)***/
@@ -552,4 +651,61 @@ span.visitar {
 @media (min-width: 992px) and (max-width: 1199.98px) {}
 
 /***Extra large devices (large desktops, 1200px and up)***/
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+
+  /*Width*/
+  .w-xl-100 {
+    width: 100%;
+  }
+
+  .w-xl-75 {
+    width: 75%;
+  }
+
+  .w-xl-50 {
+    width: 50%;
+  }
+}
+
+/*Width*/
+@media (min-width: 576px) {
+  .w-sm-100 {
+    width: 100%;
+  }
+
+  .w-sm-75 {
+    width: 75%;
+  }
+
+  .w-sm-50 {
+    width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .w-md-100 {
+    width: 100%;
+  }
+
+  .w-md-75 {
+    width: 75%;
+  }
+
+  .w-md-50 {
+    width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .w-lg-100 {
+    width: 100%;
+  }
+
+  .w-lg-75 {
+    width: 75%;
+  }
+
+  .w-lg-50 {
+    width: 50%;
+  }
+}

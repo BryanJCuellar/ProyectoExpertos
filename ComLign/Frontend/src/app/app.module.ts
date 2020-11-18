@@ -1,5 +1,6 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +24,7 @@ import { CommonLogoComponent } from './shared/components/common-logo/common-logo
 import { PlansComponent } from './pages/plans/plans.component';
 import { PlanPaymentComponent } from './pages/plan-payment/plan-payment.component';
 import { CommonLogoDarkComponent } from './shared/components/common-logo-dark/common-logo-dark.component';
+import { BusinessHomeComponent } from './pages/business-home/business-home.component';
 
 @NgModule({
   declarations: [
@@ -43,11 +45,13 @@ import { CommonLogoDarkComponent } from './shared/components/common-logo-dark/co
     CommonLogoComponent,
     PlansComponent,
     PlanPaymentComponent,
-    CommonLogoDarkComponent
+    CommonLogoDarkComponent,
+    BusinessHomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    LayoutModule,
     NgbModule,
     FontAwesomeModule,
     FormsModule,

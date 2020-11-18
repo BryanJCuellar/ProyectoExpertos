@@ -1,0 +1,67 @@
+<div id="page-designCompany">
+  <!--Barra de navegacion-->
+  <nav class="navbar navbar-expand-md navbar-dark bg-custom-nav-dark fixed-top py-2 px-xl-4">
+    <button class="btn btn-toggle d-inline-block d-md-none" id="menu-toggle" (click)="activarToggle()">
+        <i class="fas fa-toggle-off" *ngIf="isToogled"></i>
+        <i class="fas fa-toggle-on" *ngIf="!isToogled"></i>
+    </button>
+    <a class="navbar-brand" href="#">
+      <img class="nav-logo d-none d-md-inline-block" src="../../../assets/images/logotipo/Icon_White.png" alt="">
+      <span class="custom-white font-weight-bold">Nombre Empresa</span>
+    </a>
+    <button class="navbar-toggler custom-toggler my-2 my-md-0" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse pl-lg-4" id="navbarSupportedContent">
+      <form class="d-inline w-100 my-2 my-md-0 mx-md-3 ml-lg-5">
+        <div class="position-relative">
+          <i class="fas fa-search"></i>
+          <input class="form-control input-search w-lg-75 w-md-100 w-sm-75" type="search" placeholder="Buscar">
+        </div>
+      </form>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown my-4 my-md-0">
+          <a class="nav-custom-link mr-lg-3 mr-xl-5 p-3 dropdown-toggle" id="navCuentaUsuarioEmpresa" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="img-perfil mr-2" src="../../../assets/images/Anonymous.png" alt="">
+            Nombre Usuario
+          </a>
+          <div class="dropdown-menu py-3" aria-labelledby="navCuentaUsuarioEmpresa">
+            <a class="dropdown-item"><i class="far fa-user font-s-2 mr-3"></i>Mi
+              Cuenta</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item"><i class="fas fa-sign-out-alt font-s-2 mr-3"></i>Cerrar
+              Sesión</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!---->
+  <div class="d-flex" id="wrapper" [ngClass]="{'toggled':isToogled==true}">
+    <!-- Sidebar -->
+    <div class="bg-custom-nav-dark border-right" id="sidebar-wrapper">
+      <!--<div class="sidebar-heading">Heading</div>-->
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white">Inicio</a>
+        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white">Pedidos</a>
+        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white">Productos</a>
+        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white">Clientes</a>
+        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white">Preferencias</a>
+        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white">Configuración</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <div class="container-fluid pt-2">
+        <h1 class="mt-4">Lorem Ipsum</h1>
+        <p class="custom-gray">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores perferendis quibusdam ipsam vero error ad alias ullam aliquam illo voluptates?</p>
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+  </div>
+  <!-- /#wrapper -->
+</div>
