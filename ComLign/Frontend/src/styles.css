@@ -290,7 +290,7 @@ nav .dropdown-menu .dropdown-item:hover,
 .input-sign:focus,
 .custom-textarea:focus,
 #page-companies .form-control.input-search:focus {
-  border-color: rgb(100, 225, 223);
+  border-color: #64e1df;
   box-shadow: 0 0 0 0.2rem rgba(100, 225, 223, .25);
 }
 
@@ -610,6 +610,24 @@ span.visitar {
   border-color:   #b9f0f3;
   box-shadow: 0px 0px 5px inset#ffffff;
   text-decoration: none
+}
+
+/*Formularios reactivos*/
+.form-error{
+  color: #CD0052;
+  margin: 5px;
+  margin-top: 0px;
+  font-size: .8rem;
+}
+
+.form-input-error{
+  border-color: #DD0000;
+}
+.input-sign.form-input-error:focus,
+.custom-textarea.form-input-error:focus{
+  outline: 0px;
+  border-color: #DD0000;
+  box-shadow: 0 0 0 0.2rem rgba(221, 0, 0,.25);
 }
 
 /**/

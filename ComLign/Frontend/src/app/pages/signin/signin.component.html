@@ -6,54 +6,94 @@
     <div id="seccion-registro" class="box-sign mb-5">
       <app-common-logo></app-common-logo>
       <h1 class="text-center custom-primaryBlue mb-3"><b>Registro</b></h1>
-      <div class="label-input mb-3">
-        <label class="label-form custom-primaryBlue pl-2" for="registro-tipoUsuario"><b>Tipo Usuario</b></label>
-        <select id="registro-tipoUsuario" class="custom-select" [(ngModel)]="tipoUsuarioSeleccionado">
-          <option ngValue="">Seleccionar</option>
-          <option ngValue="cliente">Cliente</option>
-          <option ngValue="empresario">Empresario</option>
-          <option ngValue="admin">Administrador</option>
-        </select>
-      </div>
-      <div class="label-input mb-3">
-        <label class="label-form custom-primaryBlue pl-2" for="registro-nombre"><b>Nombre</b></label>
-        <input type="text" id="registro-nombre" class="form-control input-sign px-3" placeholder="Nombre">
-      </div>
-      <div class="label-input mb-3">
-        <label class="label-form custom-primaryBlue pl-2" for="registro-apellido"><b>Apellido</b></label>
-        <input type="text" id="registro-apellido" class="form-control input-sign px-3" placeholder="Apellido">
-      </div>
-      <div class="label-input mb-3">
-        <label class="label-form custom-primaryBlue pl-2" for="registro-email"><b>Email</b></label>
-        <input type="email" id="registro-email" class="form-control input-sign px-3" placeholder="Email">
-      </div>
-      <div id="div-inputNombreEmpresa" class="label-input mb-3"
-        [ngClass]="{'visible':tipoUsuarioSeleccionado == 'empresario', 'no-visible':tipoUsuarioSeleccionado != 'empresario'}">
-        <label class="label-form custom-primaryBlue pl-2" for="registro-nombreEmpresa"><b>Empresa</b></label>
-        <input type="text" id="registro-nombreEmpresa" class="form-control input-sign px-3"
-          placeholder="Nombre Empresa">
-      </div>
-      <div id="div-inputInfoEmpresa" class="label-input mb-3"
-        [ngClass]="{'visible':tipoUsuarioSeleccionado == 'empresario', 'no-visible':tipoUsuarioSeleccionado != 'empresario'}">
-        <label class="label-form custom-primaryBlue pl-2" for="registro-infoEmpresa"><b>Descripción Empresa</b></label>
-        <textarea id="registro-infoEmpresa" class="form-control custom-textarea px-3"
-          placeholder="Descripción sobre la Empresa" cols="30" rows="5"></textarea>
-      </div>
-      <div id="div-inputAdmin" class="label-input mb-3"
-        [ngClass]="{'visible':tipoUsuarioSeleccionado == 'admin', 'no-visible':tipoUsuarioSeleccionado != 'admin'}">
-        <label class="label-form custom-primaryBlue pl-2" for="registro-codigoAdmin"><b>Codigo Admin</b></label>
-        <input type="text" id="registro-codigoAdmin" class="form-control input-sign px-3"
-          placeholder="Codigo de Administrador">
-      </div>
-      <div class="label-input mb-3">
-        <label class="label-form custom-primaryBlue pl-2" for="registro-usuario"><b>Usuario</b></label>
-        <input type="text" id="registro-usuario" class="form-control input-sign px-3" placeholder="Usuario">
-      </div>
-      <div class="label-input mb-5">
-        <label class="label-form custom-primaryBlue pl-2" for="registro-password"><b>Password</b></label>
-        <input type="password" id="registro-password" class="form-control input-sign px-3" placeholder="Password">
-      </div>
-      <div class="text-center mb-5"><button type="button" class="btn btn-primary">Registrar</button></div>
+      <form [formGroup]="formularioAuxiliar">
+        <div class="label-input mb-3">
+          <label class="label-form custom-primaryBlue pl-2" for="tipoUsuario"><b>Tipo Usuario</b></label>
+          <select (change)="cambiarTipoUsuario($event.target.value)" formControlName="tipoUsuario"
+            class="custom-select">
+            <option>Cliente</option>
+            <option>Empresa</option>
+            <option>Administrador</option>
+          </select>
+        </div>
+      </form>
+      <form [formGroup]="formularioRegistro">
+        <div class="label-input mb-3">
+          <label class="label-form custom-primaryBlue pl-2" for="nombre"><b>Nombre</b></label>
+          <input [ngClass]="{'form-input-error':nombre.invalid && (nombre.dirty || nombre.touched)}"
+            formControlName="nombre" type="text" class="form-control input-sign px-3" placeholder="Nombre">
+          <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="form-error">
+            <span *ngIf="nombre.errors.required">Error el campo es obligatorio</span>
+            <span *ngIf="nombre.errors.maxlength">Error el tamaño maximo es de 10 caracteres</span>
+          </div>
+        </div>
+        <div class="label-input mb-3">
+          <label class="label-form custom-primaryBlue pl-2" for="apellido"><b>Apellido</b></label>
+          <input [ngClass]="{'form-input-error':apellido.invalid && (apellido.dirty || apellido.touched)}"
+            formControlName="apellido" type="text" class="form-control input-sign px-3" placeholder="Apellido">
+          <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)" class="form-error">
+            <span *ngIf="apellido.errors.required">Error el campo es obligatorio</span>
+            <span *ngIf="apellido.errors.maxlength">Error el tamaño maximo es de 10 caracteres</span>
+          </div>
+        </div>
+        <div class="label-input mb-3">
+          <label class="label-form custom-primaryBlue pl-2" for="email"><b>Email</b></label>
+          <input [ngClass]="{'form-input-error':email.invalid && (email.dirty || email.touched)}"
+            formControlName="email" type="email" class="form-control input-sign px-3" placeholder="Email">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="form-error">
+            <span *ngIf="email.errors.required">Error el campo es obligatorio</span>
+          </div>
+        </div>
+        <div id="div-inputNombreEmpresa" class="label-input mb-3"
+          [ngClass]="{'visible':tipoUsuarioSeleccionado == 'Empresa', 'no-visible':tipoUsuarioSeleccionado != 'Empresa'}">
+          <label class="label-form custom-primaryBlue pl-2" for="nombreEmpresa"><b>Empresa</b></label>
+          <input
+            [ngClass]="{'form-input-error':nombreEmpresa.invalid && (nombreEmpresa.dirty || nombreEmpresa.touched)}"
+            formControlName="nombreEmpresa" type="text" class="form-control input-sign px-3"
+            placeholder="Nombre Empresa">
+          <div *ngIf="nombreEmpresa.invalid && (nombreEmpresa.dirty || nombreEmpresa.touched)" class="form-error">
+            <span *ngIf="nombreEmpresa.errors.required">Error el campo es obligatorio</span>
+            <span *ngIf="nombreEmpresa.errors.maxlength">Error el tamaño maximo es de 20 caracteres</span>
+          </div>
+        </div>
+        <div id="div-inputInfoEmpresa" class="label-input mb-3"
+          [ngClass]="{'visible':tipoUsuarioSeleccionado == 'Empresa', 'no-visible':tipoUsuarioSeleccionado != 'Empresa'}">
+          <label class="label-form custom-primaryBlue pl-2" for="descripcionEmpresa"><b>Descripción
+              Empresa</b></label>
+          <textarea
+            [ngClass]="{'form-input-error':descripcionEmpresa.invalid && (descripcionEmpresa.dirty || descripcionEmpresa.touched)}"
+            formControlName="descripcionEmpresa" class="form-control custom-textarea px-3"
+            placeholder="Descripción sobre la Empresa" cols="30" rows="5" maxlength="500"></textarea>
+          <div *ngIf="descripcionEmpresa.invalid && (descripcionEmpresa.dirty || descripcionEmpresa.touched)"
+            class="form-error">
+            <span *ngIf="descripcionEmpresa.errors.required">Error el campo es obligatorio</span>
+          </div>
+        </div>
+        <div id="div-inputAdmin" class="label-input mb-3"
+          [ngClass]="{'visible':tipoUsuarioSeleccionado == 'Administrador', 'no-visible':tipoUsuarioSeleccionado != 'Administrador'}">
+          <label class="label-form custom-primaryBlue pl-2" for="codigoAdministrador"><b>Codigo Admin</b></label>
+          <input
+            [ngClass]="{'form-input-error':codigoAdministrador.invalid && (codigoAdministrador.dirty || codigoAdministrador.touched)}"
+            formControlName="codigoAdministrador" type="text" class="form-control input-sign px-3"
+            placeholder="Codigo de Administrador">
+          <div *ngIf="codigoAdministrador.invalid && (codigoAdministrador.dirty || codigoAdministrador.touched)"
+            class="form-error">
+            <span *ngIf="codigoAdministrador.errors.required">Error el campo es obligatorio</span>
+          </div>
+        </div>
+        <div class="label-input mb-5">
+          <label class="label-form custom-primaryBlue pl-2" for="password"><b>Password</b></label>
+          <input [ngClass]="{'form-input-error':password.invalid && (password.dirty || password.touched)}"
+              formControlName="password" #inputPassword type="password" class="form-control input-sign pl-3 pr-5"
+              placeholder="Password">
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="form-error">
+            <span *ngIf="password.errors.required">Error el campo es obligatorio</span>
+            <span *ngIf="password.errors.minlength">La contraseña debe tener como minimo 8 caracteres</span>
+          </div>
+          <div class="custom-gray pt-1 pl-2"><input type="checkbox" class="mr-2" (click)="cambiarInput(inputPassword)"><b>Mostrar Password</b></div>
+        </div>
+        <div class="text-center mb-5"><button type="button" class="btn btn-primary">Registrar</button></div>
+      </form>
     </div>
   </main>
   <!--Pie de Página-->
