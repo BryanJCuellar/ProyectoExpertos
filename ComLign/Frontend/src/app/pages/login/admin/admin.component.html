@@ -7,22 +7,45 @@
       <app-common-logo-dark></app-common-logo-dark>
       <h1 class="text-center custom-white mb-3"><b>Inicio de Sesión</b></h1>
       <div class="text-center mb-3"><i class="fas fa-user-tie custom-white font-s-5"></i></div>
-      <div class="label-input mb-3">
-        <label class="label-form custom-white pl-2" for="login-email"><b>Email</b></label>
-        <input type="email" id="login-email" class="form-control input-sign px-3" placeholder="Email">
-      </div>
-      <div class="label-input mb-3">
-        <label class="label-form custom-white pl-2" for="login-password"><b>Password</b></label>
-        <input type="password" id="login-password" class="form-control input-sign px-3" placeholder="Password">
-      </div>
-      <div class="label-input mb-5">
-        <label class="label-form custom-white pl-2" for="login-codigoAdmin"><b>Codigo Admin</b></label>
-        <input type="text" id="login-codigoAdmin" class="form-control input-sign px-3"
-          placeholder="Codigo de Administrador">
-      </div>
-      <div class="text-center mb-3">
-        <button type="button" class="btn btn-outline-primary">Iniciar Sesión</button>
-      </div>
+      <form [formGroup]="formularioSesionAdministrador">
+        <div class="label-input mb-3">
+          <label class="label-form custom-white pl-2" for="email"><b>Email</b></label>
+          <input [ngClass]="{'form-input-error':email.invalid && (email.dirty || email.touched)}"
+            formControlName="email" type="email" class="form-control input-sign px-3" placeholder="Email" required>
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="form-error">
+            <span *ngIf="email.errors.required">Por favor, ingrese email</span>
+          </div>
+        </div>
+        <div class="label-input mb-3">
+          <label class="label-form custom-white pl-2" for="password"><b>Password</b></label>
+          <input [ngClass]="{'form-input-error':password.invalid && (password.dirty || password.touched)}"
+            formControlName="password" #inputPassword type="password" class="form-control input-sign px-3"
+            placeholder="Password" required>
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="form-error">
+            <span *ngIf="password.errors.required">Por favor, ingrese password</span>
+            <span *ngIf="password.errors.minlength">Minimo 8 caracteres</span>
+          </div>
+          <div class="custom-white pt-1 pl-2"><input type="checkbox" class="mr-2"
+              (click)="cambiarInput(inputPassword)"><b>Mostrar Password</b></div>
+        </div>
+        <div class="label-input mb-5">
+          <label class="label-form custom-white pl-2" for="codigoAdministrador"><b>Codigo Admin</b></label>
+          <input
+            [ngClass]="{'form-input-error':codigoAdministrador.invalid && (codigoAdministrador.dirty || codigoAdministrador.touched)}"
+            formControlName="codigoAdministrador" type="text" class="form-control input-sign px-3"
+            placeholder="Codigo de Administrador" required>
+          <div *ngIf="codigoAdministrador.invalid && (codigoAdministrador.dirty || codigoAdministrador.touched)"
+            class="form-error">
+            <span *ngIf="codigoAdministrador.errors.required">Por favor, ingrese el codigo de administrador</span>
+            <span *ngIf="codigoAdministrador.errors.minlength">Minimo 12 caracteres</span>
+          </div>
+        </div>
+        <div class="text-center mb-3">
+          <button [disabled]="!formularioSesionAdministrador.valid" type="button" class="btn btn-outline-primary"
+            (click)="iniciarSesionAdministrador()">Iniciar
+            Sesión</button>
+        </div>
+      </form>
     </div>
   </main>
   <!--Pie de Página-->

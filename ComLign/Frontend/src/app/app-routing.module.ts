@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent, data: {title: 'ComLign - Inicio'}},
   {path: 'info-companies', component: CompaniesComponent, data: {title: 'ComLign - Empresas'}},
   {path: 'signin', component: SigninComponent, data: {title: 'ComLign - Registrarse '}},
-  {path: 'login/client', component: ClientComponent, data: {title: 'ComLign - Iniciar Sesión'}},
+  {path: 'login/client', component: ClientComponent, data: {title: 'ComLign - Login Cliente'}},
   {path: 'login/business', component: BusinessComponent, data: {title: 'ComLign - Login Empresa'}},
   {path: 'login/admin', component: AdminComponent, data: {title: 'ComLign - Login Admin'}},
   {path: 'admin-companies', component: BusinessHomeComponent, data: {title: 'ComLign - Business'}},

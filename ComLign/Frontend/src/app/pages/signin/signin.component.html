@@ -9,19 +9,22 @@
       <form [formGroup]="formularioAuxiliar">
         <div class="label-input mb-3">
           <label class="label-form custom-primaryBlue pl-2" for="tipoUsuario"><b>Tipo Usuario</b></label>
-          <select (change)="cambiarTipoUsuario($event.target.value)" formControlName="tipoUsuario"
-            class="custom-select">
+          <select [ngClass]="{'form-input-error':tipoUsuario.invalid && (tipoUsuario.touched)}"
+            (change)="cambiarTipoUsuario($event.target.value)" formControlName="tipoUsuario" class="custom-select"
+            required>
             <option>Cliente</option>
             <option>Empresa</option>
-            <option>Administrador</option>
           </select>
+          <div *ngIf="tipoUsuario.invalid && (tipoUsuario.touched)" class="form-error">
+            <span *ngIf="tipoUsuario.errors.required">Seleccione el tipo de usuario por favor</span>
+          </div>
         </div>
       </form>
       <form [formGroup]="formularioRegistro">
         <div class="label-input mb-3">
           <label class="label-form custom-primaryBlue pl-2" for="nombre"><b>Nombre</b></label>
           <input [ngClass]="{'form-input-error':nombre.invalid && (nombre.dirty || nombre.touched)}"
-            formControlName="nombre" type="text" class="form-control input-sign px-3" placeholder="Nombre">
+            formControlName="nombre" type="text" class="form-control input-sign px-3" placeholder="Nombre" required>
           <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="form-error">
             <span *ngIf="nombre.errors.required">Error el campo es obligatorio</span>
             <span *ngIf="nombre.errors.maxlength">Error el tamaño maximo es de 10 caracteres</span>
@@ -30,7 +33,7 @@
         <div class="label-input mb-3">
           <label class="label-form custom-primaryBlue pl-2" for="apellido"><b>Apellido</b></label>
           <input [ngClass]="{'form-input-error':apellido.invalid && (apellido.dirty || apellido.touched)}"
-            formControlName="apellido" type="text" class="form-control input-sign px-3" placeholder="Apellido">
+            formControlName="apellido" type="text" class="form-control input-sign px-3" placeholder="Apellido" required>
           <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)" class="form-error">
             <span *ngIf="apellido.errors.required">Error el campo es obligatorio</span>
             <span *ngIf="apellido.errors.maxlength">Error el tamaño maximo es de 10 caracteres</span>
@@ -39,7 +42,7 @@
         <div class="label-input mb-3">
           <label class="label-form custom-primaryBlue pl-2" for="email"><b>Email</b></label>
           <input [ngClass]="{'form-input-error':email.invalid && (email.dirty || email.touched)}"
-            formControlName="email" type="email" class="form-control input-sign px-3" placeholder="Email">
+            formControlName="email" type="email" class="form-control input-sign px-3" placeholder="Email" required>
           <div *ngIf="email.invalid && (email.dirty || email.touched)" class="form-error">
             <span *ngIf="email.errors.required">Error el campo es obligatorio</span>
           </div>
@@ -69,30 +72,20 @@
             <span *ngIf="descripcionEmpresa.errors.required">Error el campo es obligatorio</span>
           </div>
         </div>
-        <div id="div-inputAdmin" class="label-input mb-3"
-          [ngClass]="{'visible':tipoUsuarioSeleccionado == 'Administrador', 'no-visible':tipoUsuarioSeleccionado != 'Administrador'}">
-          <label class="label-form custom-primaryBlue pl-2" for="codigoAdministrador"><b>Codigo Admin</b></label>
-          <input
-            [ngClass]="{'form-input-error':codigoAdministrador.invalid && (codigoAdministrador.dirty || codigoAdministrador.touched)}"
-            formControlName="codigoAdministrador" type="text" class="form-control input-sign px-3"
-            placeholder="Codigo de Administrador">
-          <div *ngIf="codigoAdministrador.invalid && (codigoAdministrador.dirty || codigoAdministrador.touched)"
-            class="form-error">
-            <span *ngIf="codigoAdministrador.errors.required">Error el campo es obligatorio</span>
-          </div>
-        </div>
         <div class="label-input mb-5">
           <label class="label-form custom-primaryBlue pl-2" for="password"><b>Password</b></label>
           <input [ngClass]="{'form-input-error':password.invalid && (password.dirty || password.touched)}"
-              formControlName="password" #inputPassword type="password" class="form-control input-sign pl-3 pr-5"
-              placeholder="Password">
+            formControlName="password" #inputPassword type="password" class="form-control input-sign pl-3 pr-5"
+            placeholder="Password" required>
           <div *ngIf="password.invalid && (password.dirty || password.touched)" class="form-error">
             <span *ngIf="password.errors.required">Error el campo es obligatorio</span>
             <span *ngIf="password.errors.minlength">La contraseña debe tener como minimo 8 caracteres</span>
           </div>
-          <div class="custom-gray pt-1 pl-2"><input type="checkbox" class="mr-2" (click)="cambiarInput(inputPassword)"><b>Mostrar Password</b></div>
+          <div class="custom-gray pt-1 pl-2"><input type="checkbox" class="mr-2"
+              (click)="cambiarInput(inputPassword)"><b>Mostrar Password</b></div>
         </div>
-        <div class="text-center mb-5"><button type="button" class="btn btn-primary">Registrar</button></div>
+        <div class="text-center mb-5"><button [disabled]="!formularioAuxiliar.valid || !formularioRegistro.valid"
+            type="button" class="btn btn-primary" (click)="enviarFormularioRegistro()">Registrar</button></div>
       </form>
     </div>
   </main>

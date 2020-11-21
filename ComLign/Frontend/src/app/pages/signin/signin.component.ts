@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { EmpresasService } from 'src/app/services/empresas.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-signin',
@@ -8,26 +9,34 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
+  fecha: Date = new Date();
+  dias: number = 30;
+
   tipoUsuarioSeleccionado: any;
 
-  formularioAuxiliar = new FormGroup({
-    tipoUsuario: new FormControl('', [Validators.required])
-  });
+  formularioAuxiliar: FormGroup;
 
-  formularioRegistro = new FormGroup({
-    tipoUsuario: new FormControl('', [Validators.required]),
-    nombre: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-    apellido: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-    email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    nombreEmpresa: new FormControl(''),
-    descripcionEmpresa: new FormControl(''),
-    codigoAdministrador: new FormControl('')
-  });
+  formularioRegistro: FormGroup;
 
-  constructor() { }
+
+
+  constructor(private usuariosService: UsuariosService, private empresasService: EmpresasService) { }
 
   ngOnInit(): void {
+    this.formularioAuxiliar = new FormGroup({
+      tipoUsuario: new FormControl('', [Validators.required])
+    });
+    this.formularioRegistro = new FormGroup({
+      nombre: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+      apellido: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+      email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      nombreEmpresa: new FormControl(''),
+      descripcionEmpresa: new FormControl('')
+    });
+    /*this.fecha.setDate(this.fecha.getDate() + this.dias);
+    console.log(this.fecha);*/
+
   }
 
   //Metodos get
@@ -52,53 +61,82 @@ export class SigninComponent implements OnInit {
   get descripcionEmpresa() {
     return this.formularioRegistro.get('descripcionEmpresa');
   }
-  get codigoAdministrador() {
-    return this.formularioRegistro.get('codigoAdministrador');
-  }
 
   cambiarTipoUsuario(tipo) {
     this.tipoUsuarioSeleccionado = tipo;
     //Cliente
     if (tipo == "Cliente") {
       this.formularioRegistro = new FormGroup({
-        tipoUsuario: new FormControl(tipo, [Validators.required]),
-        nombre: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-        apellido: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-        email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-        password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+        nombre: new FormControl(this.nombre.value, [Validators.required, Validators.maxLength(10)]),
+        apellido: new FormControl(this.apellido.value, [Validators.required, Validators.maxLength(10)]),
+        email: new FormControl(this.email.value, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+        password: new FormControl(this.password.value, [Validators.required, Validators.minLength(8)]),
         nombreEmpresa: new FormControl(''),
-        descripcionEmpresa: new FormControl(''),
-        codigoAdministrador: new FormControl('')
+        descripcionEmpresa: new FormControl('')
       });
     }
     //Empresa
     if (tipo == "Empresa") {
       this.formularioRegistro = new FormGroup({
-        tipoUsuario: new FormControl(tipo, [Validators.required]),
-        nombre: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-        apellido: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-        email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-        password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+        nombre: new FormControl(this.nombre.value, [Validators.required, Validators.maxLength(10)]),
+        apellido: new FormControl(this.apellido.value, [Validators.required, Validators.maxLength(10)]),
+        email: new FormControl(this.email.value, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+        password: new FormControl(this.password.value, [Validators.required, Validators.minLength(8)]),
         nombreEmpresa: new FormControl('', [Validators.required, Validators.maxLength(20)]),
-        descripcionEmpresa: new FormControl('', [Validators.required, Validators.maxLength(500)]),
-        codigoAdministrador: new FormControl('')
+        descripcionEmpresa: new FormControl('', [Validators.required, Validators.maxLength(500)])
       });
     }
-    //Admin
-    if (tipo == "Administrador") {
-      this.formularioRegistro = new FormGroup({
-        tipoUsuario: new FormControl(tipo, [Validators.required]),
-        nombre: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-        apellido: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-        email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-        password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-        nombreEmpresa: new FormControl(''),
-        descripcionEmpresa: new FormControl(''),
-        codigoAdministrador: new FormControl('', [Validators.required])
-      });
-    }
-    //console.log(tipo);
     //console.log(this.formularioRegistro.value);
+  }
+
+  enviarFormularioRegistro() {
+    if (this.tipoUsuarioSeleccionado == "Cliente") {
+      this.usuariosService.guardarUsuarioCliente(this.formularioRegistro.value)
+        .subscribe(
+          res => {
+            console.log("Respuesta del servidor", res);
+            this.formularioAuxiliar.reset();
+            this.formularioRegistro.reset();
+            window.location.href = "/login/client"
+          },
+          error => {
+            console.log(error);
+          }
+        );
+    }
+    if (this.tipoUsuarioSeleccionado == "Empresa") {
+      let formularioEmpresario = {
+        nombre: this.nombre.value,
+        apellido: this.apellido.value,
+        email: this.email.value,
+        password: this.password.value,
+        idEmpresa: ''
+      }
+      this.empresasService.guardarEmpresa(this.formularioRegistro.value)
+        .subscribe(
+          res => {
+            //idEmpresa = res._id;
+            //console.log("ID de Empresa", idEmpresa);
+            formularioEmpresario.idEmpresa = res._id;
+            this.usuariosService.guardarUsuarioEmpresa(formularioEmpresario)
+              .subscribe(
+                result => {
+                  console.log("Respuesta del servidor", result);
+                  this.formularioAuxiliar.reset();
+                  this.formularioRegistro.reset();
+                  window.location.href = "/plans"
+                },
+                error => {
+                  console.log('Error al guardar usuario:',error);
+                }
+              );
+          },
+          error => {
+            console.log('Error al guardar empresa:', error);
+          }
+        );
+    }
+
   }
 
   cambiarInput(input: any): any {

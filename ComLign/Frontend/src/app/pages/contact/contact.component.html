@@ -8,19 +8,36 @@
     </div>
     <section id="seccion-contact" class="box">
       <h2 class="text-center mb-4"><b>Formulario de Contacto</b></h2>
-      <div class="label-input mb-3">
-        <label class="label-form custom-primaryBlue pl-2" for="contact-email"><b>Correo Electrónico</b></label>
-        <input type="email" id="contact-email" class="form-control input-sign px-3">
-      </div>
-      <div class="label-input mb-3">
-        <label class="label-form custom-primaryBlue pl-2" for="contact-asunto"><b>Asunto</b></label>
-        <input type="email" id="contact-asunto" class="form-control input-sign px-3">
-      </div>
-      <div class="label-input mb-5">
-        <label class="label-form custom-primaryBlue pl-2" for="contact-mensaje"><b>Mensaje</b></label>
-        <textarea id="contact-mensaje" rows="10" class="form-control custom-textarea"></textarea>
-      </div>
-      <div class="text-center mb-3"><button type="button" class="btn btn-primary">Enviar</button></div>
+      <form [formGroup]="formularioContacto">
+        <div class="label-input mb-3">
+          <label class="label-form custom-primaryBlue pl-2" for="email"><b>Correo Electrónico</b></label>
+          <input [ngClass]="{'form-input-error':email.invalid && (email.dirty || email.touched)}"
+            formControlName="email" type="email" class="form-control input-sign px-3" required>
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="form-error">
+            <span *ngIf="email.errors.required">Error el campo es obligatorio</span>
+          </div>
+        </div>
+        <div class="label-input mb-3">
+          <label class="label-form custom-primaryBlue pl-2" for="asunto"><b>Asunto</b></label>
+          <input [ngClass]="{'form-input-error':asunto.invalid && (asunto.dirty || asunto.touched)}"
+            formControlName="asunto" type="text" class="form-control input-sign px-3">
+          <div *ngIf="asunto.invalid && (asunto.dirty || asunto.touched)" class="form-error">
+            <span *ngIf="asunto.errors.required">Error el campo es obligatorio</span>
+            <span *ngIf="asunto.errors.maxlength">Error el tamaño maximo es de 100 caracteres</span>
+          </div>
+        </div>
+        <div class="label-input mb-5">
+          <label class="label-form custom-primaryBlue pl-2" for="mensaje"><b>Mensaje</b></label>
+          <textarea [ngClass]="{'form-input-error':mensaje.invalid && (mensaje.dirty || mensaje.touched)}"
+            formControlName="mensaje" rows="10" class="form-control custom-textarea"></textarea>
+          <div *ngIf="mensaje.invalid && (mensaje.dirty || mensaje.touched)" class="form-error">
+            <span *ngIf="mensaje.errors.required">Error el campo es obligatorio</span>
+            <span *ngIf="mensaje.errors.maxlength">Error el tamaño maximo es de 1000 caracteres</span>
+          </div>
+        </div>
+        <div class="text-center mb-3"><button [disabled]="!formularioContacto.valid" type="button"
+            class="btn btn-primary" (click)="guardarCorreo()">Enviar</button></div>
+      </form>
     </section>
     <section>
       <p></p>

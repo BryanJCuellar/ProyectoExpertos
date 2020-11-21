@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 //import { BreakpointObserver, Breakpoints, BreakpointState, MediaMatcher } from '@angular/cdk/layout';
-/*import * as $ from 'jquery';*/
 
 @Component({
   selector: 'app-business-home',
@@ -11,17 +10,13 @@ import { Component, OnInit } from '@angular/core';
   }
 })
 export class BusinessHomeComponent implements OnInit {
+  isMenuCollapsed: boolean = true;
   isToogled: boolean = true;
   width: number = window.innerWidth;
 
   constructor() { }
 
   ngOnInit(): void {
-    //Toggle Click Function
-    /*$("#menu-toggle").click(function (e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });*/
   }
 
   onWindowResize(event) {
