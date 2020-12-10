@@ -2,6 +2,21 @@ var express = require('express');
 var router = express.Router();
 var usuarioEmpresa = require('../models/usuarioEmpresa');
 
+// Obtener emails para verificar duplicacion
+router.get('/emails', function (req, res) {
+    usuarioEmpresa.find({},{
+        email: true,
+    })
+    .then(result => {
+        res.send(result);
+        res.end();
+    })
+    .catch(error => {
+        res.send(error);
+        res.end();
+    });
+})
+
 //Guardar usuario (empresa)
 router.post('/', function (req, res) {
     const empresario = new usuarioEmpresa({

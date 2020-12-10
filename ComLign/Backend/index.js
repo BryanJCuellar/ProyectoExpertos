@@ -8,8 +8,6 @@ var empresasRouter = require('./routes/empresas-router');
 
 var app = express();
 
-var nodemailer = require('nodemailer');
-
 // Middleware
 app.use(cors()); // Permita peticiones de otros origenes
 app.use(bodyParser.json());
@@ -23,35 +21,6 @@ app.use('/usuarios/empresas', usuariosEmpresaRouter);
 //Empresas
 app.use('/empresas', empresasRouter);
 
-
-//Send mails
-
-/*var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        email: 'tucorreo@gmail.com'
-    }
-});
-
-var mensaje = "Hola desde nodejs...";
-
-var mailOptions = {
-  from: 'tucorreo@gmail.com',
-  to: 'mi-amigo@yahoo.com',
-  subject: 'Asunto Del Correo',
-  text: mensaje
-};
-
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email enviado: ' + info.response);
-  }
-});*/
-
-
-
 app.listen(8888, function () {
-    console.log('Servidor de ComLign levantado');
+    console.log('Servidor Backend de ComLign levantado');
 });

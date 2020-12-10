@@ -12,14 +12,24 @@ export class UsuariosService {
 
   /***Clientes***/
 
+  // Obtener emails de clientes
+  obtenerEmailClientes(): Observable<any> {
+    return this.httpClient.get(`${this.backendHost}/usuarios/clientes/emails`, {});
+  }
+
   //Guardar Usuario Cliente
-  guardarUsuarioCliente(formularioRegistro):Observable<any>{
-    return this.httpClient.post(`${this.backendHost}/usuarios/clientes`,formularioRegistro);
+  guardarUsuarioCliente(formularioRegistro): Observable<any> {
+    return this.httpClient.post(`${this.backendHost}/usuarios/clientes`, formularioRegistro);
   }
 
   /***Empresarios****/
+  // Obtener emails de empresarios
+  obtenerEmailEmpresarios(): Observable<any> {
+    return this.httpClient.get(`${this.backendHost}/usuarios/empresas/emails`, {});
+  }
+
   //Guardar Usuario Empresa
-  guardarUsuarioEmpresa(formularioRegistro):Observable<any>{
-    return this.httpClient.post(`${this.backendHost}/usuarios/empresas`,formularioRegistro);
+  guardarUsuarioEmpresa(formularioRegistro): Observable<any> {
+    return this.httpClient.post(`${this.backendHost}/usuarios/empresas`, formularioRegistro);
   }
 }

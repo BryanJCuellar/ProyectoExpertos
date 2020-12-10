@@ -10,6 +10,7 @@ export class EmpresasService {
 
   constructor(private httpClient: HttpClient) { }
 
+  // Guardar una empresa
   guardarEmpresa(formularioRegistro):Observable<any>{
     return this.httpClient.post(`${this.backendHost}/empresas`,formularioRegistro);
   }

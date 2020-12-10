@@ -9,8 +9,9 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-  fecha: Date = new Date();
-  dias: number = 30;
+  /*fecha: Date = new Date();
+  dias: number = 30;*/
+  emailExiste: boolean = false;
 
   tipoUsuarioSeleccionado: any;
 
@@ -89,6 +90,40 @@ export class SigninComponent implements OnInit {
     //console.log(this.formularioRegistro.value);
   }
 
+  validarDatos() {
+    // Verificar si email se duplica
+    this.emailExiste = false;
+    // Email cliente
+    this.usuariosService.obtenerEmailClientes()
+      .subscribe(
+        res => {
+          for (let i = 0; i < res.length; i++) {
+            if (res[i].email == this.email.value) {
+              this.emailExiste = true;
+              break;
+            }
+          }
+          // Email empresario
+          this.usuariosService.obtenerEmailEmpresarios()
+            .subscribe(
+              res2 => {
+                for (let j = 0; j < res2.length; j++) {
+                  if (res2[j].email == this.email.value) {
+                    this.emailExiste = true;
+                    break;
+                  }
+                }
+                if(!this.emailExiste){
+                  this.enviarFormularioRegistro();
+                }
+              },
+              error => console.log(error)
+            );
+        },
+        error => console.log(error)
+      );
+  }
+
   enviarFormularioRegistro() {
     if (this.tipoUsuarioSeleccionado == "Cliente") {
       this.usuariosService.guardarUsuarioCliente(this.formularioRegistro.value)
@@ -97,6 +132,7 @@ export class SigninComponent implements OnInit {
             console.log("Respuesta del servidor", res);
             this.formularioAuxiliar.reset();
             this.formularioRegistro.reset();
+            alert("REGISTRO EXITOSO");
             window.location.href = "/login/client"
           },
           error => {
@@ -112,6 +148,7 @@ export class SigninComponent implements OnInit {
         password: this.password.value,
         idEmpresa: ''
       }
+
       this.empresasService.guardarEmpresa(this.formularioRegistro.value)
         .subscribe(
           res => {
@@ -120,14 +157,15 @@ export class SigninComponent implements OnInit {
             formularioEmpresario.idEmpresa = res._id;
             this.usuariosService.guardarUsuarioEmpresa(formularioEmpresario)
               .subscribe(
-                result => {
-                  console.log("Respuesta del servidor", result);
+                res2 => {
+                  console.log("Respuesta del servidor", res2);
                   this.formularioAuxiliar.reset();
                   this.formularioRegistro.reset();
+                  alert("REGISTRO EXITOSO");
                   window.location.href = "/plans"
                 },
                 error => {
-                  console.log('Error al guardar usuario:',error);
+                  console.log('Error al guardar usuario:', error);
                 }
               );
           },
@@ -136,7 +174,6 @@ export class SigninComponent implements OnInit {
           }
         );
     }
-
   }
 
   cambiarInput(input: any): any {

@@ -10,10 +10,10 @@
         <div class="label-input mb-3">
           <label class="label-form custom-primaryBlue pl-2" for="tipoUsuario"><b>Tipo Usuario</b></label>
           <select [ngClass]="{'form-input-error':tipoUsuario.invalid && (tipoUsuario.touched)}"
-            (change)="cambiarTipoUsuario($event.target.value)" formControlName="tipoUsuario" class="custom-select"
+            (change)="cambiarTipoUsuario(tipoUsuario.value)" formControlName="tipoUsuario" class="custom-select"
             required>
-            <option>Cliente</option>
-            <option>Empresa</option>
+            <option value="Cliente">Cliente</option>
+            <option value="Empresa">Empresa</option>
           </select>
           <div *ngIf="tipoUsuario.invalid && (tipoUsuario.touched)" class="form-error">
             <span *ngIf="tipoUsuario.errors.required">Seleccione el tipo de usuario por favor</span>
@@ -41,10 +41,14 @@
         </div>
         <div class="label-input mb-3">
           <label class="label-form custom-primaryBlue pl-2" for="email"><b>Email</b></label>
-          <input [ngClass]="{'form-input-error':email.invalid && (email.dirty || email.touched)}"
+          <input [ngClass]="{'form-input-error':email.invalid && (email.dirty || email.touched) || emailExiste}"
             formControlName="email" type="email" class="form-control input-sign px-3" placeholder="Email" required>
           <div *ngIf="email.invalid && (email.dirty || email.touched)" class="form-error">
             <span *ngIf="email.errors.required">Error el campo es obligatorio</span>
+            <span *ngIf="email.errors.pattern">Ingrese un email válido</span>
+          </div>
+          <div *ngIf="emailExiste" class="form-error">
+            <span>Email ya registrado</span>
           </div>
         </div>
         <div id="div-inputNombreEmpresa" class="label-input mb-3"
@@ -85,7 +89,7 @@
               (click)="cambiarInput(inputPassword)"><b>Mostrar Password</b></div>
         </div>
         <div class="text-center mb-5"><button [disabled]="!formularioAuxiliar.valid || !formularioRegistro.valid"
-            type="button" class="btn btn-primary" (click)="enviarFormularioRegistro()">Registrar</button></div>
+            type="button" class="btn btn-primary" (click)="validarDatos()">Registrar</button></div>
       </form>
     </div>
   </main>

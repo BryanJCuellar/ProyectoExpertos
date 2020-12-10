@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ContactomailService } from 'src/app/services/contactomail.service';
 
 @Component({
   selector: 'app-contact',
@@ -15,7 +14,7 @@ export class ContactComponent implements OnInit {
     mensaje: new FormControl('', [Validators.required, Validators.maxLength(1000)])
   });
 
-  constructor(private mailService:ContactomailService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -31,15 +30,7 @@ export class ContactComponent implements OnInit {
   }
 
   guardarCorreo(){
-    this.mailService.enviarCorreo(this.formularioContacto)
-    .subscribe(
-      res => {
-        console.log(res);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    
   }
 
 }
