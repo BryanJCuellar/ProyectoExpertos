@@ -14,6 +14,8 @@ var esquemaEmpresario = new mongoose.Schema({
         ref: "planes"
     },
     planPagado: Boolean
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model('empresarios', esquemaEmpresario);

@@ -1,0 +1,66 @@
+<div class="page-login pt-5">
+  <!--Barra de navegacion-->
+  <app-header></app-header>
+  <!---->
+  <main class="container-fluid">
+    <div class="mb-5">
+      <div class="text-center mb-3"><i class="fas fa-users custom-primaryBlue font-s-5"></i></div>
+      <h1 class="text-center custom-primaryBlue mb-5"><b>Inicia Sesión Para Acceder</b></h1>
+      <div class="mb-5">
+        <a class="link-container" [routerLink]="'/login/client'">
+          <div class="div-link-box mx-auto">
+            <div class="container-fluid">
+              <div class="row h-100">
+                <div class="col-12 col-sm-9 text-center mb-3 mb-sm-0 my-sm-auto">
+                  <h4 class="custom-boldBlue mb-0"><b>Acceder como Cliente</b></h4>
+                </div>
+                <div class="col-12 col-sm-3 text-center text-sm-left my-auto">
+                  <i class="fas fa-user custom-lightBlue font-s-3"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="mb-5">
+        <a class="link-container" [routerLink]="'/login/business'">
+          <div class="div-link-box mx-auto">
+            <div class="container-fluid">
+              <div class="row h-100">
+                <div class="col-12 col-sm-9 text-center mb-3 mb-sm-0 my-sm-auto">
+                  <h4 class="custom-boldBlue mb-0"><b>Acceder como Empresario</b></h4>
+                </div>
+                <div class="col-12 col-sm-3 text-center text-sm-left my-auto">
+                  <i class="fas fa-building custom-lightBlue font-s-3"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="mb-5">
+        <a class="link-container" [routerLink]="'/login/admin'">
+          <div class="div-link-box mx-auto">
+            <div class="container-fluid">
+              <div class="row h-100">
+                <div class="col-12 col-sm-9 text-center mb-3 mb-sm-0 my-sm-auto">
+                  <h4 class="custom-boldBlue mb-0"><b>Acceder como Administrador</b></h4>
+                </div>
+                <div class="col-12 col-sm-3 text-center text-sm-left my-auto">
+                  <i class="fas fa-user-tie custom-lightBlue font-s-3"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="text-center mb-3">
+        <span class="custom-gray">Eres nuevo en ComLign?</span>
+        <a class="link-sugerencia custom-mediumBlue1 ml-2" [routerLink]="'/signin'"><b>Registrate ahora!</b></a>
+      </div>
+    </div>
+  </main>
+  <!--Pie de Página-->
+  <app-footer></app-footer>
+  <!---->
+</div>

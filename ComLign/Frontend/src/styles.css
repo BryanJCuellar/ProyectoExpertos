@@ -25,7 +25,8 @@ nav .dropdown-menu .dropdown-item {
 
 .nav-item .nav-custom-link:hover,
 .footer-custom-link:hover,
-.link-container:hover {
+.link-container:hover,
+.link-decoration:hover {
   text-decoration: none;
 }
 
@@ -93,7 +94,7 @@ footer ul>li {
 /**/
 body {
   padding-top: 4rem;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 li {
@@ -123,6 +124,10 @@ nav .dropdown-menu .dropdown-item:hover,
 .footer-custom-link:hover,
 .link-hover:hover {
   color: #0BD3DF;
+}
+
+.active-link {
+  color: #0BD3DF !important;
 }
 
 #page-contact h2 {
@@ -160,6 +165,10 @@ nav .dropdown-menu .dropdown-item:hover,
 
 .bg-custom-sign {
   background-color: #BCF3F6;
+}
+
+.bg-color-logo {
+  background-color: #31B4BB;
 }
 
 .bg-black {
@@ -333,7 +342,7 @@ nav .dropdown-menu .dropdown-item:hover,
   width: 45%;
 }
 
-.div-link-help {
+.div-link-box {
   width: 500px;
   max-width: 90%;
   padding: 30px;
@@ -341,16 +350,16 @@ nav .dropdown-menu .dropdown-item:hover,
   border: 1px solid #9BA3A4;
 }
 
-.div-link-help:hover {
+.div-link-box:hover {
   background-color: #32B1BB;
   border: 1px solid #FFF;
   box-shadow: 0px 0px 8px inset #FFF;
   transition: all 0.5s ease-in-out;
 }
 
-.div-link-help:hover .custom-lightBlue,
-.div-link-help:hover .custom-boldBlue,
-.div-link-help:hover .custom-gray {
+.div-link-box:hover .custom-lightBlue,
+.div-link-box:hover .custom-boldBlue,
+.div-link-box:hover .custom-gray {
   color: #FFF !important;
 }
 
@@ -389,7 +398,7 @@ nav .dropdown-menu .dropdown-item:hover,
 #page-companies div.card {
   background-color: #33b3ba;
   padding: 10px;
-  color: #eee7db;
+  color: #f1ebe1;
   border: 1px solid #FFF;
 }
 
@@ -597,37 +606,38 @@ span.visitar {
 #page-designCompany .btn-toggle {
   min-width: 10px;
   color: #FFF !important;
-  background-color:  #80f1f7 !important;
-  border-color:  #80f1f7 !important;
+  background-color: #80f1f7 !important;
+  border-color: #80f1f7 !important;
   font-weight: bold;
   padding: 7px 15px;
   border-radius: 10px;
 }
 
-#page-designCompany .btn-toggle:hover{
+#page-designCompany .btn-toggle:hover {
   color: #FFF;
   background-color: #b9f0f3;
-  border-color:   #b9f0f3;
+  border-color: #b9f0f3;
   box-shadow: 0px 0px 5px inset#ffffff;
   text-decoration: none
 }
 
 /*Formularios reactivos*/
-.form-error{
+.form-error {
   color: #CD0052;
   margin: 5px;
   margin-top: 0px;
   font-size: .8rem;
 }
 
-.form-input-error{
+.form-input-error {
   border-color: #DD0000;
 }
+
 .input-sign.form-input-error:focus,
-.custom-textarea.form-input-error:focus{
+.custom-textarea.form-input-error:focus {
   outline: 0px;
   border-color: #DD0000;
-  box-shadow: 0 0 0 0.2rem rgba(221, 0, 0,.25);
+  box-shadow: 0 0 0 0.2rem rgba(221, 0, 0, .25);
 }
 
 /**/
@@ -725,5 +735,21 @@ span.visitar {
 
   .w-lg-50 {
     width: 50%;
+  }
+
+}
+
+/*Hoverable dropdown menu*/
+@media all and (min-width: 992px) {
+  .nav-main .nav-item .dropdown-menu {
+    display: none;
+  }
+
+  .nav-main .nav-item:hover .dropdown-menu {
+    display: block;
+  }
+
+  .nav-main .nav-item .dropdown-menu {
+    margin-top: 0;
   }
 }

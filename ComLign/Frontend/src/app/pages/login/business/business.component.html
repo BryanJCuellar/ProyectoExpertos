@@ -41,11 +41,11 @@
         </div>
         <div class="text-center mb-3"><button [disabled]="!formularioSesionEmpresario.valid" type="button"
             class="btn btn-primary" (click)="iniciarSesionEmpresario()">Iniciar
-            Sesión</button></div>
+            Sesión<i class="fas fa-sign-in-alt pl-2"></i></button></div>
       </form>
       <div class="text-center mb-4">
         <span class="custom-gray">Eres nuevo en ComLign?</span>
-        <a class="link-sugerencia custom-mediumBlue2 ml-2" [routerLink]="'/signin'">Registrate ahora!</a>
+        <a class="link-sugerencia custom-mediumBlue1 ml-2" [routerLink]="'/signin'"><b>Registrate ahora!</b></a>
       </div>
     </div>
   </main>

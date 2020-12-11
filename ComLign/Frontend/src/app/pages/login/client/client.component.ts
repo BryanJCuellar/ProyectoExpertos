@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-client',
@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./client.component.css']
 })
 export class ClientComponent implements OnInit {
-  emaiValido: boolean = true;
+  emailValido: boolean = true;
   passwordValido: boolean = true;
 
   formularioSesionCliente = new FormGroup({
@@ -16,7 +16,7 @@ export class ClientComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.minLength(8)])
   });
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.formularioSesionCliente.reset();
@@ -29,7 +29,32 @@ export class ClientComponent implements OnInit {
     return this.formularioSesionCliente.get('password');
   }
 
+
+
   iniciarSesionCliente() {
+    this.emailValido = true;
+    this.passwordValido = true;
+    this.authService.loginCliente(this.formularioSesionCliente.value)
+    .subscribe(
+      res => {
+        console.log(res);
+        if(res.mensaje == 'OK'){
+          this.authService.dataLogin = res.data;
+          this.authService.setToken();
+          console.log(this.authService.dataLogin);
+          //window.location.href = "/home";
+        }
+      },
+      error => {
+        console.log(error);
+        if(error.error.mensaje == 'No-Autorizado: Email no encontrado'){
+          this.emailValido = false;
+        }
+        if(error.error.mensaje == 'No-Autorizado: Password incorrecta'){
+          this.passwordValido = false;
+        }
+      }
+    )
 
   }
 

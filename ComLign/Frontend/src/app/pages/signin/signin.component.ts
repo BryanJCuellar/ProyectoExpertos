@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+//import { Router } from '@angular/router';
 import { EmpresasService } from 'src/app/services/empresas.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
@@ -21,7 +22,11 @@ export class SigninComponent implements OnInit {
 
 
 
-  constructor(private usuariosService: UsuariosService, private empresasService: EmpresasService) { }
+  constructor(
+    //private router: Router,
+    private usuariosService: UsuariosService, 
+    private empresasService: EmpresasService
+    ) { }
 
   ngOnInit(): void {
     this.formularioAuxiliar = new FormGroup({
@@ -114,7 +119,7 @@ export class SigninComponent implements OnInit {
                   }
                 }
                 if(!this.emailExiste){
-                  this.enviarFormularioRegistro();
+                  this.enviarRegistro();
                 }
               },
               error => console.log(error)
@@ -124,16 +129,17 @@ export class SigninComponent implements OnInit {
       );
   }
 
-  enviarFormularioRegistro() {
+  enviarRegistro() {
     if (this.tipoUsuarioSeleccionado == "Cliente") {
       this.usuariosService.guardarUsuarioCliente(this.formularioRegistro.value)
         .subscribe(
           res => {
-            console.log("Respuesta del servidor", res);
+            // console.log("Respuesta del servidor al guardar cliente", res);
             this.formularioAuxiliar.reset();
             this.formularioRegistro.reset();
             alert("REGISTRO EXITOSO");
-            window.location.href = "/login/client"
+            // this.router.navigate(['/login/client']);
+            window.location.href = "/login/client";
           },
           error => {
             console.log(error);
@@ -158,11 +164,11 @@ export class SigninComponent implements OnInit {
             this.usuariosService.guardarUsuarioEmpresa(formularioEmpresario)
               .subscribe(
                 res2 => {
-                  console.log("Respuesta del servidor", res2);
+                  // console.log("Respuesta del servidor al guardar empresario", res2);
                   this.formularioAuxiliar.reset();
                   this.formularioRegistro.reset();
                   alert("REGISTRO EXITOSO");
-                  window.location.href = "/plans"
+                  window.location.href = "/plans";
                 },
                 error => {
                   console.log('Error al guardar usuario:', error);

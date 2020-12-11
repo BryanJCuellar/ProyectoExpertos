@@ -15,9 +15,9 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 //Cliente
-app.use('/usuarios/clientes', usuariosClienteRouter);
+app.use('/clientes', usuariosClienteRouter);
 //Empresario
-app.use('/usuarios/empresas', usuariosEmpresaRouter);
+app.use('/empresarios', usuariosEmpresaRouter);
 //Empresas
 app.use('/empresas', empresasRouter);
 

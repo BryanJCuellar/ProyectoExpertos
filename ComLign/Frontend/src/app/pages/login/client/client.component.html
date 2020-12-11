@@ -10,30 +10,38 @@
       <form [formGroup]="formularioSesionCliente">
         <div class="label-input mb-3">
           <label class="label-form custom-primaryBlue pl-2" for="email"><b>Email</b></label>
-          <input [ngClass]="{'form-input-error':email.invalid && (email.dirty || email.touched)}"
+          <input [ngClass]="{'form-input-error':email.invalid && (email.dirty || email.touched) || !emailValido}"
             formControlName="email" type="email" class="form-control input-sign px-3" placeholder="Email" required>
           <div *ngIf="email.invalid && (email.dirty || email.touched)" class="form-error">
             <span *ngIf="email.errors.required">Por favor, ingrese email</span>
+            <span *ngIf="email.errors.pattern">Ingrese un email válido</span>
+          </div>
+          <div *ngIf="!emailValido" class="form-error">
+            <span>Error: Email no encontrado</span>
           </div>
         </div>
         <div class="label-input mb-5">
           <label class="label-form custom-primaryBlue pl-2" for="password"><b>Password</b></label>
-          <input [ngClass]="{'form-input-error':password.invalid && (password.dirty || password.touched)}"
+          <input
+            [ngClass]="{'form-input-error':password.invalid && (password.dirty || password.touched) || !passwordValido}"
             formControlName="password" #inputPassword type="password" class="form-control input-sign px-3"
             placeholder="Password" required>
           <div *ngIf="password.invalid && (password.dirty || password.touched)" class="form-error">
             <span *ngIf="password.errors.required">Por favor, ingrese password</span>
             <span *ngIf="password.errors.minlength">Minimo 8 caracteres</span>
           </div>
+          <div *ngIf="!passwordValido" class="form-error">
+            <span>Error: Password incorrecta</span>
+          </div>
           <div class="custom-gray pt-1 pl-2"><input type="checkbox" class="mr-2"
-            (click)="cambiarInput(inputPassword)"><b>Mostrar Password</b></div>
+              (click)="cambiarInput(inputPassword)"><b>Mostrar Password</b></div>
         </div>
-        <div class="text-center mb-3"><button [disabled]="!formularioSesionCliente.valid" type="button" class="btn btn-primary"
-            (click)="iniciarSesionCliente()">Iniciar Sesión</button></div>
+        <div class="text-center mb-3"><button [disabled]="!formularioSesionCliente.valid" type="button"
+            class="btn btn-primary" (click)="iniciarSesionCliente()">Iniciar Sesión<i class="fas fa-sign-in-alt pl-2"></i></button></div>
       </form>
       <div class="text-center mb-3">
         <span class="custom-gray">Eres nuevo en ComLign?</span>
-        <a class="link-sugerencia custom-mediumBlue2 ml-2" [routerLink]="'/signin'">Registrate ahora!</a>
+        <a class="link-sugerencia custom-mediumBlue1 ml-2" [routerLink]="'/signin'"><b>Registrate ahora!</b></a>
       </div>
     </div>
   </main>

@@ -17,8 +17,8 @@ router.get('/emails', function (req, res) {
     });
 })
 
-//Guardar usuario (empresa)
-router.post('/', function (req, res) {
+// Registrar un usuario empresa
+router.post('/signup', function (req, res) {
     const empresario = new usuarioEmpresa({
         nombre: req.body.nombre,
         apellido: req.body.apellido,

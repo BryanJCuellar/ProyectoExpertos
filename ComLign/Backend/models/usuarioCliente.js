@@ -4,7 +4,10 @@ var esquemaCliente = new mongoose.Schema({
     apellido: String,
     email: String,
     password: String,
-    imagenPerfil: String
+    imagenPerfil: String,
+    compras: Array
+},{
+    timestamps: true
 });
 
 module.exports = mongoose.model('clientes', esquemaCliente);

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-custom-nav fixed-top py-0 px-xl-4">
+<nav class="navbar navbar-expand-lg navbar-light bg-custom-nav nav-main fixed-top py-0 px-xl-4">
   <a class="navbar-brand" [routerLink]="''">
     <img class="d-none d-md-block" src="../../../../assets/images/logotipo/ComLign_Abstract_Side.png" alt="">
     <img class="d-block d-md-none" src="../../../../assets/images/logotipo/ComLign_Word.png" alt="">
@@ -10,47 +10,58 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item mb-3 mb-lg-0">
         <!--<a class="nav-custom-link mr-lg-3 mr-xl-5" href="./home">Inicio</a>-->
-        <a class="nav-custom-link mr-lg-3 mr-xl-5" [routerLink]="'/home'">Inicio</a>
+        <a class="nav-custom-link mr-lg-3 mr-xl-5" [routerLink]="'/home'" routerLinkActive="active-link">Inicio</a>
       </li>
       <li class="nav-item mb-3 mb-lg-0">
-        <a class="nav-custom-link mr-lg-3 mr-xl-5" [routerLink]="'/info-companies'">Empresas</a>
+        <a class="nav-custom-link mr-lg-3 mr-xl-5" [routerLink]="'/companies'"
+          routerLinkActive="active-link">Empresas</a>
       </li>
-      <li class="nav-item mb-3 mb-lg-0">
-        <a class="nav-custom-link mr-lg-3 mr-xl-5" [routerLink]="'/signin'">Registrarse</a>
-      </li>
-      <li class="nav-item dropdown mb-3 mb-lg-0" ngbDropdown>
-        <a class="nav-custom-link mr-lg-3 mr-xl-5 dropdown-toggle" id="registroTipoUsuario" ngbDropdownToggle>
-          Iniciar Sesión
-        </a>
-        <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="registroTipoUsuario">
-          <a class="dropdown-item" ngbDropdownItem [routerLink]="'/login/client'">Cliente</a>
-          <a class="dropdown-item" ngbDropdownItem [routerLink]="'/login/business'">Empresario</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" ngbDropdownItem [routerLink]="'/login/admin'">Administrador</a>
-        </div>
-      </li>
-      <li class="nav-item mb-3 mb-lg-0">
-        <a class="nav-custom-link mr-lg-3 mr-xl-5" [routerLink]="'/contact'">Contáctanos</a>
-      </li>
-      <li class="nav-item mb-3 mb-lg-0">
-        <a class="nav-custom-link mr-lg-3 mr-xl-5" [routerLink]="'/help'">Ayuda</a>
-      </li>
-      <!--Manejo de sesion (falta implementar)-->
-      <li class="nav-item dropdown mb-3 mb-lg-0 no-visible" ngbDropdown>
-        <a class="nav-custom-link mr-lg-3 mr-xl-5 dropdown-toggle" id="navCuentaCliente" ngbDropdownToggle>
-          <img class="img-perfil mr-2" src="../../../assets/images/Anonymous.png" alt="">
-          Nombre Usuario
-        </a>
-        <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="navCuentaCliente">
-          <a class="dropdown-item" ngbDropdownItem [routerLink]="'/login/client'">
-            <i class="far fa-user mr-3"></i>Mi Cuenta
+      <ng-container *ngIf="!getAuthService().loggedIn()">
+        <li class="nav-item mb-3 mb-lg-0">
+          <a class="nav-custom-link mr-lg-3 mr-xl-5" [routerLink]="'/signin'"
+            routerLinkActive="active-link">Registrarse</a>
+        </li>
+        <li class="nav-item dropdown mb-3 mb-lg-0" ngbDropdown>
+          <a class="nav-custom-link mr-lg-3 mr-xl-5 dropdown-toggle" id="registroTipoUsuario" ngbDropdownToggle>
+            Iniciar Sesión
           </a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" ngbDropdownItem [routerLink]="'/login/admin'">
-            <i class="fas fa-sign-out-alt mr-3"></i>Cerrar Sesión
-          </a>
-        </div>
+          <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="registroTipoUsuario">
+            <a class="dropdown-item" ngbDropdownItem [routerLink]="'/login/client'"
+              routerLinkActive="active-link">Cliente</a>
+            <a class="dropdown-item" ngbDropdownItem [routerLink]="'/login/business'"
+              routerLinkActive="active-link">Empresario</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" ngbDropdownItem [routerLink]="'/login/admin'"
+              routerLinkActive="active-link">Administrador</a>
+          </div>
+        </li>
+      </ng-container>
+      <li class="nav-item mb-3 mb-lg-0">
+        <a class="nav-custom-link mr-lg-3 mr-xl-5" [routerLink]="'/contact'"
+          routerLinkActive="active-link">Contáctanos</a>
       </li>
+      <li class="nav-item mb-3 mb-lg-0">
+        <a class="nav-custom-link mr-lg-3 mr-xl-5" [routerLink]="'/help'" routerLinkActive="active-link">Ayuda</a>
+      </li>
+      <!--Manejo de sesion cliente-->
+      <ng-container *ngIf="getAuthService().loggedIn()">
+        <li class="nav-item dropdown mb-3 mb-lg-0" ngbDropdown>
+          <a class="nav-custom-link mr-lg-3 mr-xl-5 dropdown-toggle" id="navCuentaCliente" ngbDropdownToggle>
+            <img class="img-perfil mr-2" src="../../../assets/images/Anonymous.png" alt="">
+            Usuario
+          </a>
+          <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="navCuentaCliente">
+            <a class="dropdown-item" ngbDropdownItem [routerLink]="'/login/client'">
+              <i class="far fa-user mr-3"></i>Mi Cuenta
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" ngbDropdownItem [routerLink]="'/login/admin'">
+              <i class="fas fa-sign-out-alt mr-3"></i>Cerrar Sesión
+            </a>
+          </div>
+        </li>
+      </ng-container>
+      <!---->
     </ul>
   </div>
 </nav>
