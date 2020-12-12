@@ -8,7 +8,6 @@ import { data } from 'jquery';
 })
 export class AuthService {
   backendHost: string = 'http://localhost:8888';
-  dataLogin: any;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -19,6 +18,9 @@ export class AuthService {
   }
 
   /***Empresarios***/
+  loginEmpresario(data): Observable<any> {
+    return this.httpClient.post(`${this.backendHost}/empresarios/login`, data);
+  }
 
   /***Administradores***/
 
@@ -58,14 +60,11 @@ export class AuthService {
     window.location.href = "/login";
   }
 
-  setToken(): void {
-    if (this.dataLogin != null) {
-      localStorage.setItem('token', this.dataLogin.accessToken);
-      localStorage.setItem('rol', this.dataLogin.rol);
-    }
-  }
-
   getToken() {
     return localStorage.getItem('token');
+  }
+
+  getRol() {
+    return localStorage.getItem('rol');
   }
 }

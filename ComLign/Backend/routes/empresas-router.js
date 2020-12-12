@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
 var empresa = require('../models/empresa');
 
 // Obtener empresas
@@ -9,6 +10,21 @@ router.get('/', function (req, res) {
         nombreEmpresa: true,
         descripcionEmpresa: true,
         imagenSitio: true
+    })
+    .then(result => {
+        res.send(result);
+        res.end();
+    })
+    .catch(error => {
+        res.send(error);
+        res.end();
+    });
+})
+
+// Obtener una empresa
+router.get('/:idEmpresa', function(req, res){
+    empresa.findOne({
+        _id: mongoose.Types.ObjectId(req.params.idEmpresa)
     })
     .then(result => {
         res.send(result);

@@ -1,4 +1,4 @@
-<div id="page-designCompany">
+<div id="page-designCompany" *ngIf="getAuthService().loggedInBusiness() && empresarioActual != null">
   <!--Barra de navegacion-->
   <nav class="navbar navbar-expand-md navbar-dark bg-custom-nav-dark fixed-top py-2 px-xl-4">
     <button class="btn btn-toggle d-inline-block d-md-none" id="menu-toggle" (click)="activarToggle()">
@@ -7,7 +7,9 @@
     </button>
     <a class="navbar-brand" [routerLink]="'/admin-companies'">
       <img class="nav-logo d-none d-md-inline-block" src="../../../assets/images/logotipo/Icon_White.png" alt="">
-      <span class="custom-white font-weight-bold">Nombre Empresa</span>
+      <span class="custom-white font-weight-bold">
+        {{empresarioActual.empresa[0].nombreEmpresa}}
+      </span>
     </a>
     <button class="navbar-toggler custom-toggler my-2 my-md-0" type="button"
       (click)="isMenuCollapsed = !isMenuCollapsed">
@@ -25,13 +27,14 @@
           <a class="nav-custom-link mr-lg-3 mr-xl-5 p-3 dropdown-toggle" id="navCuentaUsuarioEmpresa" role="button"
             ngbDropdownToggle>
             <img class="img-perfil mr-2" src="../../../assets/images/Anonymous.png" alt="">
-            Nombre Usuario
+            {{empresarioActual.nombre}} {{empresarioActual.apellido}}
           </a>
           <div class="dropdown-menu py-3" ngbDropdownMenu aria-labelledby="navCuentaUsuarioEmpresa">
             <a class="dropdown-item" ngbDropdownItem><i class="far fa-user font-s-2 mr-3"></i>Mi
               Cuenta</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" ngbDropdownItem><i class="fas fa-sign-out-alt font-s-2 mr-3"></i>Cerrar
+            <a class="dropdown-item" (click)="getAuthService().logout()" ngbDropdownItem><i
+                class="fas fa-sign-out-alt font-s-2 mr-3"></i>Cerrar
               Sesión</a>
           </div>
         </li>
@@ -44,22 +47,40 @@
     <div class="bg-custom-nav-dark border-right" id="sidebar-wrapper">
       <!--<div class="sidebar-heading">Heading</div>-->
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white">Tienda en Linea</a>
-        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white">Pedidos</a>
-        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white">Productos</a>
-        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white">Clientes</a>
+        <div class="container"></div>
+        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white bg-active-link"><i class="fas fa-home mr-3"></i>Inicio</a>
+        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white"><i class="fas fa-store-alt mr-3"></i>Sitio web</a>
+        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white"><i class="far fa-check-square mr-3"></i>Pedidos</a>
+        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white"><i class="fas fa-tag mr-3"></i>Productos</a>
+        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white"><i class="fas fa-user mr-3"></i>Clientes</a>
 
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
     <!-- Page Content -->
-    <div id="page-content-wrapper">
-      <div class="container-fluid pt-2">
-        <h1 class="mt-4">Lorem Ipsum</h1>
-        <p class="custom-gray">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores perferendis quibusdam
-          ipsam vero error ad alias ullam aliquam illo voluptates?</p>
-      </div>
-    </div>
+    <main id="page-content-wrapper">
+      
+      <section class="container-fluid pt-5">
+        <div class="box">
+          <div class="div-reminderPlan bg-custom-dark mb-4">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-12 col-lg-8 text-center text-lg-left mb-3 my-lg-auto">
+                  <p class="mb-0">Selecciona un plan para poder empezar a editar tu negocio</p>
+                </div>
+                <div class="col-12 col-lg-4 text-center text-lg-right my-auto">
+                  <a [routerLink]="'/plans'" class="btn btn-outline-primary w-xs-75">Ir a Planes</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h1 class="mb-3">Hola, {{empresarioActual.nombre}}</h1>
+          <h5 class="custom-gray mb-4" *ngIf="!empresarioActual.planPagado">Podras tener acceso a la edicion cuando hayas seleccionado un plan.</h5>
+          <h5 class="custom-gray mb-4" *ngIf="empresarioActual.planPagado">Empecemos a editar tu sitio con las siguientes herramientas.</h5>
+        </div>
+      </section>
+
+    </main>
     <!-- /#page-content-wrapper -->
   </div>
   <!-- /#wrapper -->

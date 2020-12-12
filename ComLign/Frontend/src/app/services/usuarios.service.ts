@@ -13,8 +13,8 @@ export class UsuariosService {
   /***Clientes***/
 
   // Obtener emails de clientes
-  obtenerEmailClientes(): Observable<any> {
-    return this.httpClient.get(`${this.backendHost}/clientes/emails`, {});
+  verificarEmailClientes(email): Observable<any> {
+    return this.httpClient.post(`${this.backendHost}/clientes/emails`, { email: email });
   }
 
   // Guardar Usuario Cliente
@@ -22,14 +22,30 @@ export class UsuariosService {
     return this.httpClient.post(`${this.backendHost}/clientes/signup`, formularioRegistro);
   }
 
+  obtenerIDCliente(): Observable<any> {
+    return this.httpClient.get(`${this.backendHost}/clientes/tokenID`, {});
+  }
+
+  obtenerUsuarioCliente(idCliente): Observable<any> {
+    return this.httpClient.get(`${this.backendHost}/clientes/${idCliente}`, {});
+  }
+
   /***Empresarios****/
   // Obtener emails de empresarios
-  obtenerEmailEmpresarios(): Observable<any> {
-    return this.httpClient.get(`${this.backendHost}/empresarios/emails`, {});
+  verificarEmailEmpresarios(email): Observable<any> {
+    return this.httpClient.post(`${this.backendHost}/empresarios/emails`, { email: email });
   }
 
   // Guardar Usuario Empresa
   guardarUsuarioEmpresa(formularioRegistro): Observable<any> {
     return this.httpClient.post(`${this.backendHost}/empresarios/signup`, formularioRegistro);
+  }
+
+  obtenerIDEmpresario(): Observable<any> {
+    return this.httpClient.get(`${this.backendHost}/empresarios/tokenID`, {});
+  }
+
+  obtenerUsuarioEmpresaAggregate(idEmpresario): Observable<any>{
+    return this.httpClient.get(`${this.backendHost}/empresarios/${idEmpresario}`,{});
   }
 }

@@ -35,26 +35,25 @@ export class ClientComponent implements OnInit {
     this.emailValido = true;
     this.passwordValido = true;
     this.authService.loginCliente(this.formularioSesionCliente.value)
-    .subscribe(
-      res => {
-        console.log(res);
-        if(res.mensaje == 'OK'){
-          this.authService.dataLogin = res.data;
-          this.authService.setToken();
-          console.log(this.authService.dataLogin);
-          //window.location.href = "/home";
+      .subscribe(
+        res => {
+          // console.log(res);
+          if (res.mensaje == 'OK') {
+            localStorage.setItem('token', res.data.accessToken);
+            localStorage.setItem('rol', res.data.rol);
+            window.location.href = "/companies";
+          }
+        },
+        error => {
+          // console.log(error);
+          if (error.error.mensaje == 'No-Autorizado: Email no encontrado') {
+            this.emailValido = false;
+          }
+          if (error.error.mensaje == 'No-Autorizado: Password incorrecta') {
+            this.passwordValido = false;
+          }
         }
-      },
-      error => {
-        console.log(error);
-        if(error.error.mensaje == 'No-Autorizado: Email no encontrado'){
-          this.emailValido = false;
-        }
-        if(error.error.mensaje == 'No-Autorizado: Password incorrecta'){
-          this.passwordValido = false;
-        }
-      }
-    )
+      )
 
   }
 

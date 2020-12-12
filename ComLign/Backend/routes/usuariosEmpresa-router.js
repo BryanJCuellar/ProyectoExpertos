@@ -1,20 +1,78 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
+var jwt = require('jsonwebtoken');
+var SECRET_KEY = 'secretkey87654321';
 var usuarioEmpresa = require('../models/usuarioEmpresa');
 
-// Obtener emails para verificar duplicacion
-router.get('/emails', function (req, res) {
-    usuarioEmpresa.find({},{
-        email: true,
-    })
-    .then(result => {
-        res.send(result);
-        res.end();
-    })
-    .catch(error => {
-        res.send(error);
-        res.end();
+// Obtener ID de token
+router.get('/tokenID', verifyToken, function (req, res) {
+    res.send({
+        text: 'This is your token ID and Rol',
+        id: req._id,
+        rol: req.rol
     });
+})
+
+// Obtener un usuario empresa
+/*router.get('/:idEmpresario', verifyToken, function (req, res) {
+    usuarioEmpresa.findOne({
+            _id: mongoose.Types.ObjectId(req.params.idEmpresario)
+        })
+        .then(result => {
+            res.send(result);
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+})*/
+
+// Obtener un usuario empresa con aggregate
+router.get('/:idEmpresario', function (req, res) {
+    usuarioEmpresa.aggregate([{
+                $lookup: {
+                    from: "empresas",
+                    localField: "empresa",
+                    foreignField: "_id",
+                    as: "empresa"
+                }
+            },
+            {
+                $match: {
+                    _id: mongoose.Types.ObjectId(req.params.idEmpresario)
+                }
+            }
+        ])
+        .then(result => {
+            res.send(result[0]);
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+});
+
+// Duplicacion de email
+router.post('/emails', function (req, res) {
+    usuarioEmpresa.findOne({
+        email: req.body.email
+    }, (err, email) => {
+        if (err) return res.status(500).send('Server error');
+        if (!email) {
+            res.status(200).send({
+                mensaje: 'OK'
+            });
+            res.end()
+        } else {
+            res.status(403).send({
+                mensaje: 'Email ya registrado'
+            });
+            res.end();
+        }
+    })
 })
 
 // Registrar un usuario empresa
@@ -30,13 +88,117 @@ router.post('/signup', function (req, res) {
         planPagado: false
     });
 
-    empresario.save().then(result => {
-        res.send(result);
-        res.end();
-    }).catch(error => {
-        res.send(error);
-        res.end();
-    })
-})
+    empresario.save()
+        .then(result => {
+            const expiresIn = 24 * 60 * 60;
+            const accessToken = jwt.sign({
+                _id: result._id,
+                rol: 'Empresario'
+            }, SECRET_KEY, {
+                expiresIn: expiresIn
+            });
+            const dataEnviar = {
+                email: result.email,
+                rol: 'Empresario',
+                accessToken: accessToken,
+                expiresIn: expiresIn
+            }
+            res.status(200).send({
+                mensaje: 'Registrado',
+                data: dataEnviar
+            });
+            res.end();
+        }).catch(error => {
+            res.send(error);
+            res.end();
+        })
+});
+
+// Loguear un usuario empresa
+router.post('/login', function (req, res) {
+    usuarioEmpresa.aggregate([{
+                $lookup: {
+                    from: "empresas",
+                    localField: "empresa",
+                    foreignField: "_id",
+                    as: "empresa"
+                }
+            },
+            {
+                $match: {
+                    email: req.body.email
+                }
+            },
+            {
+                $project: {
+                    _id: true,
+                    email: true,
+                    password: true,
+                    "empresa.nombreEmpresa": true
+                }
+            }
+        ])
+        .then(result => {
+            if (result[0].password !== req.body.password) {
+                res.status(401).send({
+                    mensaje: 'No-Autorizado: Password incorrecta'
+                });
+                res.end();
+            }
+            if (result[0].empresa[0].nombreEmpresa !== req.body.nombreEmpresa) {
+                res.status(401).send({
+                    mensaje: 'No-Autorizado: Empresa no encontrada'
+                });
+                res.end();
+            }
+            const expiresIn = 24 * 60 * 60;
+            const accessToken = jwt.sign({
+                _id: result[0]._id,
+                rol: 'Empresario'
+            }, SECRET_KEY, {
+                expiresIn: expiresIn
+            });
+            const dataEnviar = {
+                email: result[0].email,
+                rol: 'Empresario',
+                accessToken: accessToken,
+                expiresIn: expiresIn
+            }
+            res.status(200).send({
+                mensaje: 'OK',
+                data: dataEnviar
+            });
+            res.end();
+        })
+        .catch(error => {
+            res.status(401).send({
+                mensaje: 'No-Autorizado: Email no encontrado'
+            });
+            res.end();
+        });
+});
+
+
 
 module.exports = router;
+
+// Verificar Token
+function verifyToken(req, res, next) {
+    const bearerHeader = req.headers["authorization"];
+    if (typeof bearerHeader !== 'undefined') {
+        const bearer = bearerHeader.split(' ');
+        const bearerToken = bearer[1];
+        if (bearerToken === null) {
+            return res.status(401).send('No-Autorizado');
+        }
+        const payload = jwt.verify(bearerToken, SECRET_KEY);
+        if (payload.rol !== 'Empresario') {
+            return res.status(401).send('No-Autorizado');
+        }
+        req._id = payload._id;
+        req.rol = payload.rol;
+        next();
+    } else {
+        res.status(401).send('No-Autorizado');
+    }
+}

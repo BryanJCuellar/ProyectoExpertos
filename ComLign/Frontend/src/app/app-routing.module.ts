@@ -30,11 +30,11 @@ const routes: Routes = [
   { path: 'login/client', component: ClientComponent, canActivate: [CheckLoginGuard], data: { title: 'ComLign - Login Cliente' } },
   { path: 'login/business', component: BusinessComponent, canActivate: [CheckLoginGuard], data: { title: 'ComLign - Login Empresa' } },
   { path: 'login/admin', component: AdminComponent, canActivate: [CheckLoginGuard], data: { title: 'ComLign - Login Admin' } },
-  { path: 'admin-companies', component: BusinessHomeComponent, canActivate: [], data: { title: 'ComLign - Business' } },
+  { path: 'admin-companies', component: BusinessHomeComponent, canActivate: [AuthBusinessGuard], data: { title: 'ComLign - Business' } },
   { path: 'contact', component: ContactComponent, data: { title: 'ComLign - Contáctanos' } },
   { path: 'help', component: HelpComponent, data: { title: 'ComLign - Centro de Ayuda' } },
-  { path: 'plans', component: PlansComponent, canActivate: [], data: { title: 'ComLign - Planes' } },
-  { path: 'plans/payment', component: PlanPaymentComponent, canActivate: [], data: { title: 'ComLign - Pago Plan' } },
+  { path: 'plans', component: PlansComponent, canActivate: [AuthBusinessGuard], data: { title: 'ComLign - Planes' } },
+  { path: 'plans/payment', component: PlanPaymentComponent, canActivate: [AuthBusinessGuard], data: { title: 'ComLign - Pago Plan' } },
   { path: '**', component: NotFoundComponent, data: { title: '404: Page Not Found -- ComLign' } }
 ];
 

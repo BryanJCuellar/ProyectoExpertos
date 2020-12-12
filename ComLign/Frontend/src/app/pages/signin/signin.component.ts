@@ -24,9 +24,9 @@ export class SigninComponent implements OnInit {
 
   constructor(
     //private router: Router,
-    private usuariosService: UsuariosService, 
+    private usuariosService: UsuariosService,
     private empresasService: EmpresasService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.formularioAuxiliar = new FormGroup({
@@ -99,33 +99,35 @@ export class SigninComponent implements OnInit {
     // Verificar si email se duplica
     this.emailExiste = false;
     // Email cliente
-    this.usuariosService.obtenerEmailClientes()
+    this.usuariosService.verificarEmailClientes(this.email.value)
       .subscribe(
         res => {
-          for (let i = 0; i < res.length; i++) {
-            if (res[i].email == this.email.value) {
-              this.emailExiste = true;
-              break;
-            }
-          }
-          // Email empresario
-          this.usuariosService.obtenerEmailEmpresarios()
-            .subscribe(
-              res2 => {
-                for (let j = 0; j < res2.length; j++) {
-                  if (res2[j].email == this.email.value) {
+          if (res.mensaje == 'OK') {
+            // Email empresario
+            this.usuariosService.verificarEmailEmpresarios(this.email.value)
+              .subscribe(
+                res2 => {
+                  if (res2.mensaje == 'OK') {
+                    if (!this.emailExiste) {
+                      this.enviarRegistro();
+                    }
+                  }
+                },
+                error2 => {
+                  // console.log(error2);
+                  if (error2.error.mensaje == 'Email ya registrado') {
                     this.emailExiste = true;
-                    break;
                   }
                 }
-                if(!this.emailExiste){
-                  this.enviarRegistro();
-                }
-              },
-              error => console.log(error)
-            );
+              );
+          }
         },
-        error => console.log(error)
+        error => {
+          // console.log(error);
+          if (error.error.mensaje == 'Email ya registrado') {
+            this.emailExiste = true;
+          }
+        }
       );
   }
 
@@ -165,13 +167,17 @@ export class SigninComponent implements OnInit {
               .subscribe(
                 res2 => {
                   // console.log("Respuesta del servidor al guardar empresario", res2);
-                  this.formularioAuxiliar.reset();
-                  this.formularioRegistro.reset();
-                  alert("REGISTRO EXITOSO");
-                  window.location.href = "/plans";
+                  if (res2.mensaje == 'Registrado') {
+                    localStorage.setItem('token', res2.data.accessToken);
+                    localStorage.setItem('rol', res2.data.rol);
+                    this.formularioAuxiliar.reset();
+                    this.formularioRegistro.reset();
+                    alert("REGISTRO EXITOSO");
+                    window.location.href = "/admin-companies";
+                  }
                 },
                 error => {
-                  console.log('Error al guardar usuario:', error);
+                  console.log('Error al guardar usuario Empresa:', error);
                 }
               );
           },

@@ -543,7 +543,7 @@ span.visitar {
 }
 
 /*Pagina de inicio Empresa*/
-#page-designCompany .bg-custom-nav-dark {
+.bg-custom-nav-dark {
   background-color: #1C7695;
 }
 
@@ -619,6 +619,25 @@ span.visitar {
   border-color: #b9f0f3;
   box-shadow: 0px 0px 5px inset#ffffff;
   text-decoration: none
+}
+
+#page-designCompany .box{
+  width: 900px;
+  max-width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.div-reminderPlan{
+  width: 100%;
+  padding: 30px;
+  border-radius: 10px;
+  color: #FFF;
+  padding: 20px;
+}
+
+#page-designCompany .div-reminderPlan .btn-outline-primary{
+  min-width: 180px;
 }
 
 /*Formularios reactivos*/
