@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { share } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { SharedService } from 'src/app/services/shared.service';
@@ -18,6 +19,21 @@ export class BusinessHomeComponent implements OnInit {
   isToogled: boolean = true;
   width: number = window.innerWidth;
   empresarioActual: any;
+  formEditorQuill: FormGroup;
+  editorStyle = {
+    height: '300px'
+  };
+  config = {
+    toolbar: [
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ 'header': [] }, { 'align': [] }, { 'list': 'ordered' }, { 'list': 'bullet' }, { 'color': [] },
+      { 'background': [] }],
+      [{ 'script': 'super' }, { 'script': 'sub' }, 'code-block'],
+      ['image', 'video'],
+    ]
+  };
+  editorOutput: string;
+
 
   constructor(
     private authService: AuthService,
@@ -26,29 +42,40 @@ export class BusinessHomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.formEditorQuill = new FormGroup({
+      editor: new FormControl('')
+    });
     // Empresarios
-    if (this.authService.getRol() == 'Empresario'){
+    if (this.authService.getRol() == 'Empresario') {
       this.usuariosService.obtenerIDEmpresario()
-      .subscribe(
-        res => {
-          this.sharedService.setIDUsuario(res.id);
-          this.usuariosService.obtenerUsuarioEmpresaAggregate(res.id)
-          .subscribe(
-            user => {
-              this.empresarioActual = user;
-              console.log(this.empresarioActual);
-              this.sharedService.loadDataUsuario(this.empresarioActual);
-            },
-            error => console.log(error)
-          )
-        },
-        error => console.log(error)
-      )
+        .subscribe(
+          res => {
+            this.sharedService.setIDUsuario(res.id);
+            this.usuariosService.obtenerUsuarioEmpresaAggregate(res.id)
+              .subscribe(
+                user => {
+                  this.empresarioActual = user;
+                  this.sharedService.loadDataUsuario(this.empresarioActual);
+                },
+                error => console.log(error)
+              )
+          },
+          error => console.log(error)
+        )
     }
+  }
+
+  get editor() {
+    return this.formEditorQuill.get('editor');
   }
 
   getAuthService() {
     return this.authService;
+  }
+
+  onSubmit() {
+    this.editorOutput = this.editor.value;
+    // console.log(this.editor.value);
   }
 
   onWindowResize(event) {

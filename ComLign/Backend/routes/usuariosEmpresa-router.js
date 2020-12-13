@@ -8,9 +8,7 @@ var usuarioEmpresa = require('../models/usuarioEmpresa');
 // Obtener ID de token
 router.get('/tokenID', verifyToken, function (req, res) {
     res.send({
-        text: 'This is your token ID and Rol',
-        id: req._id,
-        rol: req.rol
+        id: req._id
     });
 })
 
@@ -30,7 +28,7 @@ router.get('/tokenID', verifyToken, function (req, res) {
 })*/
 
 // Obtener un usuario empresa con aggregate
-router.get('/:idEmpresario', function (req, res) {
+router.get('/:idEmpresario', verifyToken, function (req, res) {
     usuarioEmpresa.aggregate([{
                 $lookup: {
                     from: "empresas",
@@ -53,6 +51,30 @@ router.get('/:idEmpresario', function (req, res) {
             res.send(error);
             res.end();
         });
+});
+
+// Guardar o actualizar plan en empresario
+router.put('/:idEmpresario/planes/:idPlan', verifyToken, function (req, res) {
+    usuarioEmpresa.updateOne({
+        _id: mongoose.Types.ObjectId(req.params.idEmpresario)
+    },{
+       tarjeta: {
+           nombreTarjeta: req.body.nombreTarjeta,
+           numeroTarjeta: req.body.numeroTarjeta,
+           mesVencimiento: req.body.mesVencimiento,
+           anioVencimiento: req.body.anioVencimiento
+       },
+       plan: mongoose.Types.ObjectId(req.params.idPlan),
+       planPagado: true
+    })
+    .then(result => {
+        res.send(result);
+        res.end();
+    })
+    .catch(error => {
+        res.status(500).send(error);
+        res.end();
+    });
 });
 
 // Duplicacion de email
@@ -82,9 +104,10 @@ router.post('/signup', function (req, res) {
         apellido: req.body.apellido,
         email: req.body.email,
         password: req.body.password,
-        imagenPerfil: '',
+        imagenPerfil: null,
         empresa: req.body.idEmpresa,
         plan: null,
+        tarjeta: [],
         planPagado: false
     });
 
@@ -177,8 +200,6 @@ router.post('/login', function (req, res) {
             res.end();
         });
 });
-
-
 
 module.exports = router;
 

@@ -5,6 +5,7 @@ var database = require('./modules/database');
 var usuariosClienteRouter = require('./routes/usuariosCliente-router');
 var usuariosEmpresaRouter = require('./routes/usuariosEmpresa-router');
 var empresasRouter = require('./routes/empresas-router');
+var planesRouter = require('./routes/planes-router');
 
 var app = express();
 
@@ -14,13 +15,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-//Cliente
+// Cliente
 app.use('/clientes', usuariosClienteRouter);
-//Empresario
+// Empresario
 app.use('/empresarios', usuariosEmpresaRouter);
-//Empresas
-app.use('/empresas', empresasRouter);
+// Administradores
 
-app.listen(8888, function () {
-    console.log('Servidor Backend de ComLign levantado');
+// Empresas
+app.use('/empresas', empresasRouter);
+// Planes
+app.use('/planes', planesRouter);
+
+app.set('port', process.env.PORT || 8888);
+
+app.listen(app.get('port'), function () {
+    console.log(`Servidor ComLign en el puerto ${app.get('port')}`);
 });

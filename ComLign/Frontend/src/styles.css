@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
+
 * {
   margin: 0;
   padding: 0;
@@ -126,7 +130,8 @@ nav .dropdown-menu .dropdown-item:hover,
   color: #0BD3DF;
 }
 
-.active-link {
+.active-link,
+.color-heading {
   color: #0BD3DF !important;
 }
 
@@ -464,22 +469,23 @@ span.visitar {
   font-size: 20px;
 }
 
-.btn-empresarial {
+
+
+.btn-plan {
   color: #FFF;
-  background-color: #15ADCC;
-  border-color: #15ADCC;
   font-weight: bold;
   padding: 10px 30px;
   border-radius: 15px;
 }
 
-.btn-premium {
-  color: #FFF;
+.btn-blue {
+  background-color: #15ADCC;
+  border-color: #15ADCC;
+}
+
+.btn-green {
   background-color: #33EEC1;
   border-color: #33EEC1;
-  font-weight: bold;
-  padding: 10px 30px;
-  border-radius: 15px;
 }
 
 .btn-success {
@@ -491,20 +497,10 @@ span.visitar {
   border-radius: 15px;
 }
 
-.btn-empresarial:hover {
+.btn-plan:hover {
   color: #FFF;
-  background-color: #1ad3f8;
-  border-color: #1ad3f8;
   box-shadow: 0px 0px 5px inset#ffffff;
   text-decoration: none;
-}
-
-.btn-premium:hover {
-  color: #FFF;
-  background-color: #3dffd2;
-  border-color: #3dffd2;
-  box-shadow: 0px 0px 5px inset#ffffff;
-  text-decoration: none
 }
 
 .btn-success:hover {
@@ -513,10 +509,8 @@ span.visitar {
   box-shadow: 0px 0px 5px inset#ffffff;
 }
 
-.btn-empresarial:active,
-.btn-empresarial:focus,
-.btn-premium:active,
-.btn-premium:focus,
+.btn-plan:active,
+.btn-plan:focus,
 .btn-success:active,
 .btn-success:focus,
 .btn-toggle:active,
@@ -621,14 +615,14 @@ span.visitar {
   text-decoration: none
 }
 
-#page-designCompany .box{
-  width: 900px;
+#page-designCompany .box {
+  width: 950px;
   max-width: 95%;
   margin-left: auto;
   margin-right: auto;
 }
 
-.div-reminderPlan{
+.div-reminderPlan {
   width: 100%;
   padding: 30px;
   border-radius: 10px;
@@ -636,8 +630,19 @@ span.visitar {
   padding: 20px;
 }
 
-#page-designCompany .div-reminderPlan .btn-outline-primary{
+#page-designCompany .div-reminderPlan .btn-outline-primary {
   min-width: 180px;
+}
+
+#page-designCompany h1,
+#page-designCompany h2 {
+  color: #000;
+}
+
+pre {
+  background-color: #0f0f0f;
+  color: #FFF;
+  padding: 10px;
 }
 
 /*Formularios reactivos*/

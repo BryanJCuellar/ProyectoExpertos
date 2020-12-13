@@ -13,6 +13,7 @@ var esquemaEmpresario = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "planes"
     },
+    tarjeta: Array,
     planPagado: Boolean
 }, {
     timestamps: true

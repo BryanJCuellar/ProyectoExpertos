@@ -5,9 +5,10 @@ var db = 'ComLign';
 
 class Database {
     constructor() {
-        mongoose.connect(`mongodb://${servidor}/${db}`,{
+        mongoose.connect(process.env.MONGODB_URI || `mongodb://${servidor}/${db}`,{
             useNewUrlParser: true,
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
+            useFindAndModify: false
         })
             .then(() => {
                 console.log('Conexion a mongoDB exitosa');

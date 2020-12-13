@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
@@ -7,13 +7,17 @@ import { AuthService } from '../services/auth.service';
   providedIn: 'root'
 })
 export class AuthClientGuard implements CanActivate {
-  constructor(private authService: AuthService) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService
+    ) { }
 
   canActivate() {
     if (this.authService.loggedInClient()) {
       return true;
     }
-    window.location.href = "/login";
+
+    this.router.navigate(['/login']);
     return false;
   }
   

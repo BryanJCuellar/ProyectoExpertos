@@ -64,6 +64,10 @@
   background-color: #36c0c7 !important;
 }
 
+.bg-custom-output{
+  background-color: #f4f7f7;
+}
+
 @media (max-width: 767.98px) {
   #wrapper.toggled #sidebar-wrapper {
     margin-left: -15rem;

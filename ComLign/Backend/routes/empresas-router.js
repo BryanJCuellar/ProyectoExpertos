@@ -41,7 +41,7 @@ router.post('/', function (req, res) {
     const nuevaEmpresa = new empresa({
         nombreEmpresa: req.body.nombreEmpresa,
         descripcionEmpresa: req.body.descripcionEmpresa,
-        imagenSitio: '',
+        imagenSitio: null,
         paginas: [],
         productos: [],
         pedidos: [],

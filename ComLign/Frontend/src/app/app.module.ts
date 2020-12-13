@@ -1,6 +1,7 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LayoutModule } from '@angular/cdk/layout';
+import { QuillModule } from 'ngx-quill';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,8 +28,7 @@ import { ListaEmpresasComponent } from './shared/components/lista-empresas/lista
 import { CommonLogoComponent } from './shared/components/common-logo/common-logo.component';
 import { CommonLogoDarkComponent } from './shared/components/common-logo-dark/common-logo-dark.component';
 // Modules
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // Services
 import { AuthService } from './services/auth.service';
@@ -70,6 +70,7 @@ import { CheckLoginGuard } from './guards/check-login.guard';
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
+    QuillModule.forRoot(),
     HttpClientModule
   ],
   providers: [

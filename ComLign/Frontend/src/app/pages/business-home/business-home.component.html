@@ -48,21 +48,29 @@
       <!--<div class="sidebar-heading">Heading</div>-->
       <div class="list-group list-group-flush">
         <div class="container"></div>
-        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white bg-active-link"><i class="fas fa-home mr-3"></i>Inicio</a>
-        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white"><i class="fas fa-store-alt mr-3"></i>Sitio web</a>
-        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white"><i class="far fa-check-square mr-3"></i>Pedidos</a>
-        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white"><i class="fas fa-tag mr-3"></i>Productos</a>
-        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white"><i class="fas fa-user mr-3"></i>Clientes</a>
+        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white bg-active-link"><i
+            class="fas fa-home mr-3"></i>Inicio</a>
+        <a href="#" class="list-group-item list-group-item-action bg-custom-nav-dark custom-white"><i
+            class="fas fa-store-alt mr-3"></i>Sitio web</a>
+        <a [routerLink]="'/admin-companies'"
+          class="list-group-item list-group-item-action bg-custom-nav-dark custom-white"><i
+            class="far fa-check-square mr-3"></i>Pedidos</a>
+        <a [routerLink]="'/admin-companies'"
+          class="list-group-item list-group-item-action bg-custom-nav-dark custom-white"><i
+            class="fas fa-tag mr-3"></i>Productos</a>
+        <a [routerLink]="'/admin-companies'"
+          class="list-group-item list-group-item-action bg-custom-nav-dark custom-white"><i
+            class="fas fa-user mr-3"></i>Clientes</a>
 
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
     <!-- Page Content -->
     <main id="page-content-wrapper">
-      
+
       <section class="container-fluid pt-5">
         <div class="box">
-          <div class="div-reminderPlan bg-custom-dark mb-4">
+          <div class="div-reminderPlan bg-custom-dark mb-4" *ngIf="!empresarioActual.planPagado">
             <div class="container-fluid">
               <div class="row">
                 <div class="col-12 col-lg-8 text-center text-lg-left mb-3 my-lg-auto">
@@ -74,9 +82,30 @@
               </div>
             </div>
           </div>
-          <h1 class="mb-3">Hola, {{empresarioActual.nombre}}</h1>
-          <h5 class="custom-gray mb-4" *ngIf="!empresarioActual.planPagado">Podras tener acceso a la edicion cuando hayas seleccionado un plan.</h5>
-          <h5 class="custom-gray mb-4" *ngIf="empresarioActual.planPagado">Empecemos a editar tu sitio con las siguientes herramientas.</h5>
+          <h1 class="color-heading mb-3">Hola, {{empresarioActual.nombre}}</h1>
+          <h5 class="custom-gray mb-5" *ngIf="!empresarioActual.planPagado">Podras tener acceso a la edicion cuando
+            hayas seleccionado un plan.</h5>
+          <h5 class="custom-gray mb-5" *ngIf="empresarioActual.planPagado">Empecemos a editar tu sitio con las
+            siguientes herramientas.</h5>
+
+          <h2 class="color-heading mb-5">Customizar paginas</h2>
+          <div class="row">
+            <div class="col-lg-7 mb-4">
+              <form [formGroup]="formEditorQuill" (submit)="onSubmit()">
+                <div class="form-group mb-4">
+                  <label for="editor"><h3 class="custom-primaryBlue">Editor</h3></label>
+                  <quill-editor [styles]="editorStyle" [modules]="config" formControlName="editor"></quill-editor>
+                </div>
+                <button class="btn btn-primary">Enviar</button>
+              </form>
+            </div>
+            <div class="col-lg-5 mb-4">
+              <div class="bg-custom-output p-4 h-100">
+                <h3 class="custom-primaryBlue">Output</h3>
+                <p class="my-5 w-100" [innerHTML]="editorOutput"></p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

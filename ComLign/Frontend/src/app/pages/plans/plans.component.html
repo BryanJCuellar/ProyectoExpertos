@@ -1,4 +1,4 @@
-<div id="page-plans" class="bg-custom-dark pt-5">
+<div id="page-plans" class="bg-custom-dark pt-5" *ngIf="planes[0] != null && planes[1] != null">
   <!--Barra de navegacion-->
   <app-header></app-header>
   <!---->
@@ -12,16 +12,17 @@
         <div class="col-12 col-md-6 d-flex mb-5">
           <div id="plan-empresarial" class="card flex-fill w-100">
             <div class="text-center card-title bg-custom-blue">
-              <h2 class="text-white mb-0">Empresarial</h2>
+              <h2 class="text-white mb-0">{{planes[0].nombrePlan}}</h2>
             </div>
             <div class="text-center card-body">
               <ul>
                 <li class="mb-3">Herramienta de edicion Syntax Highlighting</li>
                 <li class="mb-3">Acceso al 50% de plantillas y temas</li>
                 <li class="mb-5">Limite máximo de 5 productos subidos por semana</li>
-                <li class="mb-2"><button type="button" class="btn btn-empresarial">Seleccionar</button>
+                <li class="mb-2"><button type="button" class="btn btn-plan btn-blue"
+                    (click)="seleccionarPlan(planes[0])">Seleccionar</button>
                 </li>
-                <li class="mb-1"><b>$1.99</b></li>
+                <li class="mb-1"><b>${{planes[0].precio}}</b></li>
               </ul>
             </div>
           </div>
@@ -29,15 +30,16 @@
         <div class="col-12 col-md-6 d-flex mb-5">
           <div id="plan-premium" class="card flex-fill w-100">
             <div class="text-center card-title bg-custom-green">
-              <h2 class="text-white mb-0">Premium</h2>
+              <h2 class="text-white mb-0">{{planes[1].nombrePlan}}</h2>
             </div>
             <div class="text-center card-body">
               <ul>
                 <li class="mb-3">Herramienta de edicion Syntax Highlighting</li>
                 <li class="mb-3">Acceso a todas las plantillas y temas</li>
                 <li class="mb-5">Sin limites para subida de productos</li>
-                <li class="mb-2"><button type="button" class="btn btn-premium">Seleccionar</button></li>
-                <li class="mb-3"><b>$5.99</b></li>
+                <li class="mb-2"><button type="button" class="btn btn-plan btn-green"
+                  (click)="seleccionarPlan(planes[1])">Seleccionar</button></li>
+                <li class="mb-3"><b>${{planes[1].precio}}</b></li>
               </ul>
             </div>
           </div>

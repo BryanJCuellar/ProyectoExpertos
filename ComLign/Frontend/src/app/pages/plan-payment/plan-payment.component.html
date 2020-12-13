@@ -1,4 +1,4 @@
-<div id="page-payPlan" class="bg-custom-dark pt-5">
+<div id="page-payPlan" class="bg-custom-dark pt-5" *ngIf="planSeleccionado != null">
   <!--Barra de navegacion-->
   <app-header></app-header>
   <!---->
@@ -15,34 +15,56 @@
       </div>
       <div class="label-input mb-3">
         <label class="label-form text-white pl-2" for="tipoPlan"><b>Tipo de Plan</b></label>
-        <input type="text" id="tipoPlan" class="form-control input-sign px-3" value="Empresarial" disabled>
+        <input type="text" id="tipoPlan" class="form-control input-sign px-3" value="{{planSeleccionado.nombrePlan}}"
+          disabled>
       </div>
       <div class="label-input mb-3">
         <label class="label-form text-white pl-2" for="precioPlan"><b>Precio</b></label>
-        <input type="text" id="precioPlan" class="form-control input-sign px-3" value="$1.99" disabled>
+        <input type="text" id="precioPlan" class="form-control input-sign px-3" value="${{planSeleccionado.precio}}"
+          disabled>
       </div>
-      <div class="label-input mb-3">
-        <label class="label-form text-white pl-2" for="nombreTarjeta"><b>Nombre en tarjeta</b></label>
-        <input type="text" id="nombreTarjeta" class="form-control input-sign px-3" placeholder="Nombre en tarjeta">
-      </div>
-      <div class="label-input mb-3">
-        <label class="label-form text-white pl-2" for="numeroTarjeta"><b>Número de la tarjeta</b></label>
-        <input type="text" id="numeroTarjeta" class="form-control input-sign px-3" placeholder="Número de la tarjeta">
-      </div>
-      <div class="label-input mb-5">
-        <label class="label-form text-white pl-2" for="fechaVencimiento"><b>Fecha de vencimiento</b></label><br>
-        <div id="fechaVencimiento">
-          <select id="mes-vencimiento" class="custom-select mr-3">
-            <option value="1">Enero</option>
-          </select>
-          <select id="anio-vencimiento" class="custom-select">
-            <option value="2021">2021</option>
-          </select>
+      <form [formGroup]="formularioPlan">
+        <div class="label-input mb-3">
+          <label class="label-form text-white pl-2" for="nombreTarjeta"><b>Nombre en tarjeta</b></label>
+          <input [ngClass]="{'form-input-error':nombreTarjeta.invalid && (nombreTarjeta.touched)}" type="text"
+            formControlName="nombreTarjeta" class="form-control input-sign px-3" placeholder="Nombre en tarjeta">
+          <div *ngIf="nombreTarjeta.invalid && (nombreTarjeta.touched)" class="form-error">
+            <span *ngIf="nombreTarjeta.errors.required">Error el campo es obligatorio</span>
+          </div>
         </div>
-      </div>
-      <div class="text-center mb-4"><button type="button" class="btn btn-outline-primary">Comprar Plan</button></div>
-      <div class="text-center"><a class="link-sugerencia custom-white" [routerLink]="'/plans'">Volver a Selección de Plan</a>
-      </div>
+        <div class="label-input mb-3">
+          <label class="label-form text-white pl-2" for="numeroTarjeta"><b>Número de la tarjeta</b></label>
+          <input [ngClass]="{'form-input-error':numeroTarjeta.invalid && (numeroTarjeta.touched)}" type="text"
+            formControlName="numeroTarjeta" class="form-control input-sign px-3" placeholder="Número de la tarjeta">
+          <div *ngIf="numeroTarjeta.invalid && (numeroTarjeta.touched)" class="form-error">
+            <span *ngIf="numeroTarjeta.errors.required">Error el campo es obligatorio</span>
+          </div>
+        </div>
+        <div class="label-input mb-5">
+          <label class="label-form text-white pl-2" for="fechaVencimiento"><b>Fecha de vencimiento</b></label><br>
+          <div id="fechaVencimiento">
+            <select [ngClass]="{'form-input-error':mesVencimiento.invalid && (mesVencimiento.touched)}"
+              class="custom-select mr-3" formControlName="mesVencimiento">
+              <option *ngFor="let mes of meses" value="{{mes}}">{{mes}}</option>
+            </select>
+            <select [ngClass]="{'form-input-error':anioVencimiento.invalid && (anioVencimiento.touched)}"
+              class="custom-select" formControlName="anioVencimiento">
+              <option *ngFor="let anio of anios" value={{anio}}>{{anio}}</option>
+            </select>
+            <div
+              *ngIf="(mesVencimiento.invalid && (mesVencimiento.touched)) || (anioVencimiento.invalid && (anioVencimiento.touched))"
+              class="form-error">
+              <span *ngIf="mesVencimiento.errors.required || anioVencimiento.errors.required">Error el campo es
+                obligatorio</span>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mb-4"><button [disabled]="!formularioPlan.valid" type="button"
+            class="btn btn-outline-primary" (click)="comprarPlan()">Comprar Plan</button></div>
+        <div class="text-center"><a class="link-sugerencia custom-white" [routerLink]="'/plans'">Volver a Selección de
+            Plan</a>
+        </div>
+      </form>
     </div>
   </main>
   <!--Pie de Página-->

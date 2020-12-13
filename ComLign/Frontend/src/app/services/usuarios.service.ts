@@ -45,7 +45,11 @@ export class UsuariosService {
     return this.httpClient.get(`${this.backendHost}/empresarios/tokenID`, {});
   }
 
-  obtenerUsuarioEmpresaAggregate(idEmpresario): Observable<any>{
-    return this.httpClient.get(`${this.backendHost}/empresarios/${idEmpresario}`,{});
+  obtenerUsuarioEmpresaAggregate(idEmpresario): Observable<any> {
+    return this.httpClient.get(`${this.backendHost}/empresarios/${idEmpresario}`, {});
+  }
+
+  guardarPlanEmpresario(idEmpresario, idPlan, data): Observable<any> {
+    return this.httpClient.put(`${this.backendHost}/empresarios/${idEmpresario}/planes/${idPlan}`, data);
   }
 }

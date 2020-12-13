@@ -63,7 +63,7 @@ router.post('/signup', function (req, res) {
         apellido: req.body.apellido,
         email: req.body.email,
         password: req.body.password,
-        imagenPerfil: '',
+        imagenPerfil: null,
         compras: []
     });
     cliente.save().then(result => {
@@ -119,8 +119,8 @@ router.post('/login', function (req, res) {
         });
 });
 
-// Obtener todos los clientes (Opcional)
-router.get('/', function (req, res) {
+// Obtener todos los clientes
+/*router.get('/', function (req, res) {
     usuarioCliente.find({}, {
             _id: true,
             nombre: true,
@@ -135,7 +135,7 @@ router.get('/', function (req, res) {
             res.send(error);
             res.end();
         });
-});
+});*/
 
 module.exports = router;
 
