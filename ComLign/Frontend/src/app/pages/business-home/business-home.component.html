@@ -87,13 +87,14 @@
             hayas seleccionado un plan.</h5>
           <h5 class="custom-gray mb-5" *ngIf="empresarioActual.planPagado">Empecemos a editar tu sitio con las
             siguientes herramientas.</h5>
-
           <h2 class="color-heading mb-5">Customizar paginas</h2>
           <div class="row">
             <div class="col-lg-7 mb-4">
               <form [formGroup]="formEditorQuill" (submit)="onSubmit()">
                 <div class="form-group mb-4">
-                  <label for="editor"><h3 class="custom-primaryBlue">Editor</h3></label>
+                  <label for="editor">
+                    <h3 class="custom-primaryBlue">Editor</h3>
+                  </label>
                   <quill-editor [styles]="editorStyle" [modules]="config" formControlName="editor"></quill-editor>
                 </div>
                 <button class="btn btn-primary">Enviar</button>

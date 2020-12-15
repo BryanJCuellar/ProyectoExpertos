@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PlanesService {
-  backendHost: string = 'http://localhost:8888';
+  // backendHost: string = 'http://localhost:8888';
+  backendHost: string = 'https://backend-comlign.herokuapp.com';
 
   constructor(private httpClient: HttpClient) { }
 

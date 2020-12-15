@@ -4,88 +4,20 @@
   <a class="link-mirar custom-lightBlue ml-2" [routerLink]="'/companies'"><b>Mirar Aquí</b></a>
 </p>
 <div class="row">
-  <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-5">
-    <a [routerLink]="'/companies'">
-      <div class="card">
-        <img class="img-fluid filter-opacity" src="../../../../assets/images/ejemplo-empresa-1.jpg" alt="">
-      </div>
-    </a>
-  </div>
-  <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-5">
-    <a [routerLink]="'/companies'">
-      <div class="card">
-        <img class="img-fluid filter-opacity" src="../../../../assets/images/ejemplo-empresa-1.jpg" alt="">
-      </div>
-    </a>
-  </div>
-  <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-5">
-    <a [routerLink]="'/companies'">
-      <div class="card">
-        <img class="img-fluid filter-opacity" src="../../../../assets/images/ejemplo-empresa-1.jpg" alt="">
-      </div>
-    </a>
-  </div>
-  <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-5">
-    <a [routerLink]="'/companies'">
-      <div class="card">
-        <img class="img-fluid filter-opacity" src="../../../../assets/images/ejemplo-empresa-1.jpg" alt="">
-      </div>
-    </a>
-  </div>
-  <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-5">
-    <a [routerLink]="'/companies'">
-      <div class="card">
-        <img class="img-fluid filter-opacity" src="../../../../assets/images/ejemplo-empresa-2.jpg" alt="">
-      </div>
-    </a>
-  </div>
-  <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-5">
-    <a [routerLink]="'/companies'">
-      <div class="card">
-        <img class="img-fluid filter-opacity" src="../../../../assets/images/ejemplo-empresa-2.jpg" alt="">
-      </div>
-    </a>
-  </div>
-  <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-5">
-    <a [routerLink]="'/companies'">
-      <div class="card">
-        <img class="img-fluid filter-opacity" src="../../../../assets/images/ejemplo-empresa-2.jpg" alt="">
-      </div>
-    </a>
-  </div>
-  <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-5">
-    <a [routerLink]="'/companies'">
-      <div class="card">
-        <img class="img-fluid filter-opacity" src="../../../../assets/images/ejemplo-empresa-2.jpg" alt="">
-      </div>
-    </a>
-  </div>
-  <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-5">
-    <a [routerLink]="'/companies'">
-      <div class="card">
-        <img class="img-fluid filter-opacity" src="../../../../assets/images/ejemplo-empresa-3.jpg" alt="">
-      </div>
-    </a>
-  </div>
-  <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-5">
-    <a [routerLink]="'/companies'">
-      <div class="card">
-        <img class="img-fluid filter-opacity" src="../../../../assets/images/ejemplo-empresa-3.jpg" alt="">
-      </div>
-    </a>
-  </div>
-  <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-5">
-    <a [routerLink]="'/companies'">
-      <div class="card">
-        <img class="img-fluid filter-opacity" src="../../../../assets/images/ejemplo-empresa-3.jpg" alt="">
-      </div>
-    </a>
-  </div>
-  <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-5">
-    <a [routerLink]="'/companies'">
-      <div class="card">
-        <img class="img-fluid filter-opacity" src="../../../../assets/images/ejemplo-empresa-3.jpg" alt="">
-      </div>
-    </a>
-  </div>
+  <ng-container *ngFor="let empresa of muestraEmpresas">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-5">
+      <a [routerLink]="'/companies'">
+        <div class="card">
+          <ng-container *ngIf="empresa.imagenSitio == null">
+            <img class="img-fluid filter-opacity"
+              src="../../../../assets/companies/images/defaultImageCompany.png" alt="Card image">
+          </ng-container>
+          <ng-container *ngIf="empresa.imagenSitio != null">
+            <img class="card-img-top img-fluid filter-opacity"
+              src="../../../../assets/{{empresa.imagenSitio}}" alt="Card image">
+          </ng-container>
+        </div>
+      </a>
+    </div>
+  </ng-container>
 </div>

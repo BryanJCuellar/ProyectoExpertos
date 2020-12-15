@@ -7,7 +7,8 @@ import { data } from 'jquery';
   providedIn: 'root'
 })
 export class AuthService {
-  backendHost: string = 'http://localhost:8888';
+  // backendHost: string = 'http://localhost:8888';
+  backendHost: string = 'https://backend-comlign.herokuapp.com';
 
   constructor(private httpClient: HttpClient) { }
 

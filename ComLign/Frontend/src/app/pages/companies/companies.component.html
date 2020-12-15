@@ -15,9 +15,40 @@
           <input type="search" class="form-control input-search mr-1" placeholder="Buscar...">
           <button class="btn btn-search"><i class="fas fa-search"></i></button>
         </div>
-        <app-lista-empresas></app-lista-empresas>
+        <!--Lista de empresas-->
+        <div class="row">
+          <ng-container
+            *ngFor="let empresa of empresas | paginate: { itemsPerPage: dataPerPage, currentPage: pageActual }">
+            <!--Empresa base-->
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex mb-5">
+              <div class="card flex-fill">
+                <a href="#">
+                  <div class="div-visitar">
+                    <ng-container *ngIf="empresa.imagenSitio == null">
+                      <img class="card-img-top img-fluid filter-opacity"
+                        src="../../../assets/companies/images/defaultImageCompany.png" alt="Card image">
+                    </ng-container>
+                    <ng-container *ngIf="empresa.imagenSitio != null">
+                      <img class="card-img-top img-fluid filter-opacity"
+                        src="../../../../assets/{{empresa.imagenSitio}}" alt="Card image">
+                    </ng-container>
+                    <span class="visitar custom-lightBlue">Visitar</span>
+                  </div>
+                </a>
+                <div class="card-body">
+                  <h5 class="card-title">{{empresa.nombreEmpresa}}</h5>
+                  <p class="card-text mb-2">{{empresa.descripcionEmpresa}}</p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+        <!---->
       </section>
-      <div class="div-pagination mb-5">
+      <div class="div-pagination text-center mb-5">
+        <pagination-controls class="companies-pagination" (pageChange)="pageActual = $event"></pagination-controls>
+      </div>
+      <!--<div class="div-pagination mb-5">
         <ul class="pagination justify-content-center">
           <li class="page-item"><a class="page-link" href="#">Previous</a></li>
           <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -25,7 +56,7 @@
           <li class="page-item"><a class="page-link" href="#">3</a></li>
           <li class="page-item"><a class="page-link" href="#">Next</a></li>
         </ul>
-      </div>
+      </div>-->
     </div>
   </main>
   <!--Pie de Página-->

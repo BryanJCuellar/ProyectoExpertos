@@ -439,6 +439,38 @@ span.visitar {
 }
 
 /*Paginacion*/
+.companies-pagination /deep/ .pagination-previous,
+.companies-pagination /deep/ .pagination-previous:focus,
+.companies-pagination /deep/ .pagination-next,
+.companies-pagination /deep/ .pagination-next:focus {
+  background-color: #fcffff;
+  border: 1px solid #28c2ca;
+  color: #22aca9;
+}
+
+.companies-pagination /deep/ .pagination-previous.disabled,
+.companies-pagination /deep/ .pagination-previous.disabled:focus,
+.companies-pagination /deep/ .pagination-next.disabled,
+.companies-pagination /deep/ .pagination-next.disabled:focus {
+  background-color: #fcffff;
+  border: 1px solid #807e7e;
+  color: #807e7e;
+}
+
+.companies-pagination /deep/ .ngx-pagination li {
+  background-color: #fcffff;
+  border: 1px solid #28b5bd;
+  color: #28b5bd;
+}
+
+.companies-pagination /deep/ .ngx-pagination .current {
+  background-color: #30dce6;
+  border: 1px solid #2ab2b9;
+  color: #fcffff;
+}
+
+/**/
+
 .page-link {
   /*color: #1c7695;*/
   color: #33b3ba;

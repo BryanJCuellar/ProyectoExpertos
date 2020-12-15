@@ -1,7 +1,6 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LayoutModule } from '@angular/cdk/layout';
-import { QuillModule } from 'ngx-quill';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +23,6 @@ import { BusinessHomeComponent } from './pages/business-home/business-home.compo
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { MuestraEmpresasComponent } from './shared/components/muestra-empresas/muestra-empresas.component';
-import { ListaEmpresasComponent } from './shared/components/lista-empresas/lista-empresas.component';
 import { CommonLogoComponent } from './shared/components/common-logo/common-logo.component';
 import { CommonLogoDarkComponent } from './shared/components/common-logo-dark/common-logo-dark.component';
 // Modules
@@ -38,6 +36,9 @@ import { AuthClientGuard } from './guards/auth-client.guard';
 import { AuthBusinessGuard } from './guards/auth-business.guard';
 import { AuthAdminGuard } from './guards/auth-admin.guard';
 import { CheckLoginGuard } from './guards/check-login.guard';
+// External
+import { QuillModule } from 'ngx-quill';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,6 @@ import { CheckLoginGuard } from './guards/check-login.guard';
     HeaderComponent,
     NotFoundComponent,
     MuestraEmpresasComponent,
-    ListaEmpresasComponent,
     CommonLogoComponent,
     PlansComponent,
     PlanPaymentComponent,
@@ -71,6 +71,7 @@ import { CheckLoginGuard } from './guards/check-login.guard';
     FormsModule,
     ReactiveFormsModule,
     QuillModule.forRoot(),
+    NgxPaginationModule,
     HttpClientModule
   ],
   providers: [
